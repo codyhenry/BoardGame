@@ -1,20 +1,46 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar as ExpoStatusBar } from "expo-status-bar";
+import { ThemeProvider } from "styled-components/native";
+import { theme } from "./src/infrastructure/theme";
+import { useFonts } from "expo-font";
+import {
+  Ubuntu_400Regular,
+  Ubuntu_500Medium,
+  Ubuntu_700Bold,
+} from "@expo-google-fonts/ubuntu";
+import {
+  Prompt_400Regular,
+  Prompt_500Medium,
+  Prompt_700Bold,
+} from "@expo-google-fonts/prompt";
+
+import { Text } from "react-native";
+/*
+
+import { Navigation } from "./src/infrastructure/navigation/index";
+*/
+
+import { CollectionsScreen } from "./src/features/collections/screens/collections.screen";
 
 export default function App() {
+  const [loadedFonts] = useFonts({
+    Ubuntu_400Regular,
+    Ubuntu_500Medium,
+    Ubuntu_700Bold,
+    Prompt_400Regular,
+    Prompt_500Medium,
+    Prompt_700Bold,
+  });
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      {!loadedFonts ? (
+        <Text>Replace this with splash screen</Text>
+      ) : (
+        <ThemeProvider theme={theme}>
+          <ExpoStatusBar style="auto" />
+          <CollectionsScreen></CollectionsScreen>
+        </ThemeProvider>
+      )}
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
