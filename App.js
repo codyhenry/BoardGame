@@ -20,6 +20,7 @@ import { Navigation } from "./src/infrastructure/navigation/index";
 */
 
 import { CollectionsScreen } from "./src/features/collections/screens/collections.screen";
+import { GamesScreen } from "./src/features/games/screens/games.screen";
 
 export default function App() {
   const [loadedFonts] = useFonts({
@@ -38,7 +39,7 @@ export default function App() {
       ) : (
         <ThemeProvider theme={theme}>
           <ExpoStatusBar style="auto" />
-          <CollectionsScreen></CollectionsScreen>
+          <GamesScreen></GamesScreen>
         </ThemeProvider>
       )}
     </>

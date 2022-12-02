@@ -1,3 +1,4 @@
+import { ImageBackground } from "react-native";
 import {
   InfoCard,
   InfoCardCover,
@@ -7,10 +8,10 @@ import {
 } from "../../../components/info-card.styles";
 import { CustomText } from "../../../components/text.component";
 
-export const GameInfoCard = ({ collection = {} }) => {
+export const GameInfoCard = ({ game = {} }) => {
   const {
-    name = "Some Collection",
-    photo = "https://en.wikipedia.org/wiki/File:Catan-2015-boxart.jpg#/media/File:Catan-2015-boxart.jpg",
+    name = "Some Game",
+    photo = "https://upload.wikimedia.org/wikipedia/en/a/a3/Catan-2015-boxart.jpg",
     links = [
       "amazon.com",
       "target.com",
@@ -20,18 +21,20 @@ export const GameInfoCard = ({ collection = {} }) => {
     ],
     year = 2015,
     bestPrice = 100.0,
-  } = collection;
+  } = game;
   return (
     <InfoCard elevation={5}>
-      <InfoCardCover source={{ uri: photo }} />
+      <ImageBackground source={{ uri: photo }} resizeMode="cover">
+        <InfoCardCover source={{ uri: photo }} resizeMode="contain" />
+      </ImageBackground>
       <Info>
         <Section>
           <CustomText variant="label">{name} </CustomText>
         </Section>
         <Section>
-          <CustomText variant="caption">published: {year} Items</CustomText>
+          <CustomText variant="caption">published: {year}</CustomText>
           <SectionEnd>
-            <CustomText variant="label">{bestPrice}</CustomText>
+            <CustomText variant="label">${bestPrice}</CustomText>
           </SectionEnd>
         </Section>
       </Info>

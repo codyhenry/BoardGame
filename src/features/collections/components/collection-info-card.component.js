@@ -14,7 +14,7 @@ export const CollectionInfoCard = ({ collection = {} }) => {
     numGames = 60,
   } = collection;
   return (
-    <InfoCard elevation={5}>
+    <InfoCard elevation={5} mode="outlined">
       <Info>
         <Section>
           <CustomText variant="label">{name} </CustomText>
