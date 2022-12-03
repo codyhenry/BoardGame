@@ -1,0 +1,31 @@
+{
+  "results":[
+    {
+      "name": "Favorites",
+      "collectionTag": "owned",
+      "numGames": 75
+      
+    },
+    {
+      "name": "Watchlist",
+      "collectionTag": "wishlist",
+      "numGames": 34
+      
+    },
+    {
+      "name": "Dont Buy",
+      "collectionTag": "custom",
+      "numGames": 12
+    },
+    {
+      "name": "For Sale",
+      "collectionTag": "selling",
+      "numGames": 117
+    },
+    {
+      "name": "Kickstarter",
+      "collectionTag": "crowdfund",
+      "numGames": 15
+    }
+  ]
+}

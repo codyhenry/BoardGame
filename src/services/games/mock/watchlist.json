@@ -1,0 +1,44 @@
+{
+  "results": [
+    {
+      "name": "Spirit Island",
+      "year": 2016,
+      "bestPrice": 62.97,
+      "min_players": 1,
+      "playerCountMax": 4,
+      "playTime": 120 
+    },
+    {
+      "name": "The Castles of Burgundy",
+      "year": 2011,
+      "bestPrice": 41.99,
+      "min_players": 2,
+      "playerCountMax": 4,
+      "playTime": 90
+    },
+    {
+      "name": "Codenames",
+      "year": 2015,
+      "bestPrice": 14.50,
+      "min_players": 2,
+      "playerCountMax": 8,
+      "playTime": 15
+    },
+    {
+      "name": "Brass: Birmingham",
+      "year": 2022,
+      "bestPrice": 162.96,
+      "min_players": 2,
+      "playerCountMax": 4,
+      "playTime": 180
+    },
+    {
+      "name": "Ticket to Ride",
+      "year": 2004,
+      "bestPrice": 25.0,
+      "min_players": 2,
+      "playerCountMax": 5,
+      "playTime": 90
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "results": [
+    {
+      "name": "Aeon Trespass: Odyssey",
+      "year": 2022,
+      "bestPrice": 449.0,
+      "min_players": 1,
+      "max_players": 4,
+      "playTime": 90 
+    },
+    {
+      "name": "Heat: Pedal to the Metal",
+      "year": 2022,
+      "bestPrice": 75.0,
+      "min_players": 1,
+      "max_players": 6,
+      "playTime": 60 
+    },
+    {
+      "name": "Pest",
+      "year": 2023,
+      "bestPrice": 175.0,
+      "min_players": 1,
+      "max_players": 5,
+      "playTime": 150 
+    },
+    {
+      "name": "Frosthaven",
+      "year": 2022,
+      "bestPrice": 100.0,
+      "min_players": 1,
+      "max_players": 4,
+      "playTime": 120 
+    },
+    {
+      "name": "Ark Nova",
+      "year": 2021,
+      "bestPrice": 35.0,
+      "min_players": 1,
+      "max_players": 4,
+      "playTime": 150 
+    }
+  ]
+}

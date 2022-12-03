@@ -14,12 +14,11 @@ import {
 } from "@expo-google-fonts/prompt";
 
 import { Text } from "react-native";
+import { GamesContextProvider } from "./src/services/games/games.context";
 /*
 
 import { Navigation } from "./src/infrastructure/navigation/index";
 */
-
-import { CollectionsScreen } from "./src/features/collections/screens/collections.screen";
 import { GamesScreen } from "./src/features/games/screens/games.screen";
 
 export default function App() {

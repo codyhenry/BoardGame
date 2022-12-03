@@ -12,6 +12,7 @@ export const CollectionInfoCard = ({ collection = {} }) => {
     name = "Some Collection",
     collectionTag = "wishlist",
     numGames = 60,
+    //totalPledgeValue,
   } = collection;
   return (
     <InfoCard elevation={5} mode="outlined">
