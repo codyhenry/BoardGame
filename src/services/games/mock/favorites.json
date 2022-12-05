@@ -1,0 +1,44 @@
+{
+  "results": [
+    {
+      "name": "Catan",
+      "year": 1995,
+      "bestPrice": 25.0,
+      "min_players": 3,
+      "max_players": 4,
+      "playTime": 90 
+    },
+    {
+      "name": "Gloomhaven",
+      "year": 2017,
+      "bestPrice": 99.99,
+      "min_players": 1,
+      "max_players": 4,
+      "playTime": 150 
+    },
+    {
+      "name": "Dice Throne: Season 1 Rerolled",
+      "year": 2020,
+      "bestPrice": 100.0,
+      "min_players": 2,
+      "max_players": 6,
+      "playTime": 40 
+    },
+    {
+      "name": "Dice Throne: Season 2",
+      "year": 2018,
+      "bestPrice": 149.0,
+      "min_players": 2,
+      "max_players": 6,
+      "playTime": 40 
+    },
+    {
+      "name": "Here To Slay",
+      "year": 2020,
+      "bestPrice": 35.0,
+      "min_players": 2,
+      "max_players": 6,
+      "playTime": 90 
+    }
+  ]
+}

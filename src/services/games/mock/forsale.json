@@ -1,0 +1,44 @@
+{
+  "results": [
+    {
+      "name": "Pax Hispanica",
+      "year": 2023,
+      "bestPrice": 246.0,
+      "min_players": 1,
+      "max_players": 5,
+      "playTime": 150 
+    },
+    {
+      "name": "Steam Park",
+      "year": 2013,
+      "bestPrice": 28.95,
+      "min_players": 2,
+      "max_players": 4,
+      "playTime": 60 
+    },
+    {
+      "name": "Terraforming Mars",
+      "year": 2016,
+      "bestPrice": 51.99,
+      "min_players": 1,
+      "max_players": 5,
+      "playTime": 120 
+    },
+    {
+      "name": "7 Wonders Duel",
+      "year": 2015,
+      "bestPrice": 27.99,
+      "min_players": 2,
+      "max_players": 2,
+      "playTime": 45 
+    },
+    {
+      "name": "Splendor",
+      "year": 2014,
+      "bestPrice": 30.59,
+      "min_players": 2,
+      "max_players": 4,
+      "playTime": 60 
+    }
+  ]
+}

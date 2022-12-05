@@ -1,0 +1,44 @@
+{
+  "results": [
+    {
+      "name": "Azul",
+      "year": 2017,
+      "bestPrice": 27.19,
+      "min_players": 2,
+      "max_players": 4,
+      "playTime": 60 
+    },
+    {
+      "name": "Wingspan",
+      "year": 2019,
+      "bestPrice": 44.97,
+      "min_players": 1,
+      "max_players": 5,
+      "playTime": 70 
+    },
+    {
+      "name": "Scythe",
+      "year": 2016,
+      "bestPrice": 54.92,
+      "min_players": 1,
+      "max_players": 5,
+      "playTime": 120 
+    },
+    {
+      "name": "Root",
+      "year": 2018,
+      "bestPrice": 47.99,
+      "min_players": 2,
+      "max_players": 4,
+      "playTime": 90 
+    },
+    {
+      "name": "Concordia",
+      "year": 2013,
+      "bestPrice": 44.49,
+      "min_players": 2,
+      "max_players": 5,
+      "playTime": 120 
+    }
+  ]
+}
