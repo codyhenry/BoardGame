@@ -38,7 +38,9 @@ export default function App() {
       ) : (
         <ThemeProvider theme={theme}>
           <ExpoStatusBar style="auto" />
-          <GamesScreen></GamesScreen>
+          <GamesContextProvider>
+            <GamesScreen></GamesScreen>
+          </GamesContextProvider>
         </ThemeProvider>
       )}
     </>

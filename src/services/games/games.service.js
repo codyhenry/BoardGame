@@ -12,11 +12,13 @@ export const gamesRequest = (collection = "favorites") => {
   });
 };
 
-const gamesTransform = ({ results = [] }) => {
+export const gamesTransform = ({ results = [] }) => {
   const newResult = camelize(results);
   const mappedResults = newResult.map((game) => {
     return {
       ...game,
+      photo:
+        gameImages[Math.floor(Math.random() * (gameImages.length - 1) + 1)],
       //alter any necessary fields here
     };
   });

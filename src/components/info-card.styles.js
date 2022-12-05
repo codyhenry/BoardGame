@@ -23,3 +23,5 @@ export const SectionEnd = styled.View`
   flex-direction: row;
   justify-content: flex-end;
 `;
+
+//make this like the text component using the chip categories as variants
