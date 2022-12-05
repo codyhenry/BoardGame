@@ -5,7 +5,7 @@ export const LoadingComponent = styled(ActivityIndicator).attrs(({ theme }) => {
   const size = theme.spacing.xxl;
   return {
     size: Number(size.slice(0, size.length - 2)),
-    color: theme.colors.brand.primary,
+    color: theme.colors.brand.secondary,
   };
 })`
   flex: 1;

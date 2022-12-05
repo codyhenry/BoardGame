@@ -6,7 +6,7 @@ export const gamesRequest = (collection = "favorites") => {
   return new Promise((resolve, reject) => {
     const gameMock = mocks[collection];
     if (!gameMock) {
-      reject("not found");
+      reject("Sorry, no results match your search");
     }
     resolve(gameMock);
   });
@@ -19,19 +19,8 @@ export const gamesTransform = ({ results = [] }) => {
       ...game,
       photo:
         gameImages[Math.floor(Math.random() * (gameImages.length - 1) + 1)],
-      //alter any necessary fields here
+      //alter any necessary fields here such as links
     };
   });
   return mappedResults;
 };
-
-/*
-gamesRequest()
-  .then(gamesTransform)
-  .then((transformedResponse) => {
-    console.log(JSON.stringify(transformedResponse, null, 1));
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-*/

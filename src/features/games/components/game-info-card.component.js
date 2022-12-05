@@ -10,6 +10,7 @@ import { CustomText } from "../../../components/text.component";
 
 //TODO: figure out if I need to make multiple components for different categories
 export const GameInfoCard = ({ game = {} }) => {
+  //console.log(JSON.stringify(game, null, 2));
   const {
     name = "Some Game",
     photo = "https://upload.wikimedia.org/wikipedia/en/a/a3/Catan-2015-boxart.jpg",

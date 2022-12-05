@@ -5,8 +5,9 @@ import styled from "styled-components/native";
 
 import { SafeArea } from "../../../components/safe-area.component";
 import { Spacer } from "../../../components/spacer.component";
-import { LoadingComponent } from "../../../components/loading.component";
+import { LoadingComponent } from "../../../components/activity-indicator.component";
 import { GameInfoCard } from "../components/game-info-card.component";
+import { ErrorScreen } from "../../../components/error.component";
 
 import { GamesContext } from "../../../services/games/games.context";
 
@@ -21,8 +22,8 @@ export const GamesScreen = () => {
   return (
     <SafeArea>
       <Searchbar />
-
-      {isLoading ? (
+      {error && <ErrorScreen errorMessage={error} />}
+      {!error && isLoading ? (
         <LoadingComponent />
       ) : (
         <GameList
