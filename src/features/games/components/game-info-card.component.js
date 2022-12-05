@@ -10,7 +10,6 @@ import { CustomText } from "../../../components/text.component";
 
 //TODO: figure out if I need to make multiple components for different categories
 export const GameInfoCard = ({ game = {} }) => {
-  //console.log(JSON.stringify(game, null, 2));
   const {
     name = "Some Game",
     photo = "https://upload.wikimedia.org/wikipedia/en/a/a3/Catan-2015-boxart.jpg",
@@ -26,6 +25,7 @@ export const GameInfoCard = ({ game = {} }) => {
     playTime = 30,
     minPlayers = 1,
     maxPlayers = 3,
+    //notes:
     // pledgeEndDate = new Date().toLocaleDateString("en-GB", {
     //   year: "numeric",
     //   month: "2-digit",
@@ -43,6 +43,7 @@ export const GameInfoCard = ({ game = {} }) => {
     //   month: "2-digit",
     //   day: "2-digit",
     // }),
+    //SELLING: Condition (chips: red=damaged, orange=worn, yellow=like new, green=new in shrink), number of duplicate games to sell
   } = game;
   return (
     <InfoCard elevation={5}>

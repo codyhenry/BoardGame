@@ -15,6 +15,7 @@ import {
 
 import { Text } from "react-native";
 import { GamesContextProvider } from "./src/services/games/games.context";
+import { CollectionContextProvider } from "./src/services/collections/collections.context";
 /*
 
 import { Navigation } from "./src/infrastructure/navigation/index";
@@ -38,9 +39,11 @@ export default function App() {
       ) : (
         <ThemeProvider theme={theme}>
           <ExpoStatusBar style="auto" />
-          <GamesContextProvider>
-            <GamesScreen></GamesScreen>
-          </GamesContextProvider>
+          <CollectionContextProvider>
+            <GamesContextProvider>
+              <GamesScreen></GamesScreen>
+            </GamesContextProvider>
+          </CollectionContextProvider>
         </ThemeProvider>
       )}
     </>

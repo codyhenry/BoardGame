@@ -29,6 +29,7 @@ export const GamesContextProvider = ({ children }) => {
   useEffect(() => {
     retrieveGames();
   }, []);
+
   return (
     <GamesContext.Provider value={{ games, isLoading, error }}>
       {children}

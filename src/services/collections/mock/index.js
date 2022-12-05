@@ -1,5 +1,6 @@
 import collections from "./collections.mock.json";
 
+//will actually be userName:collectionName
 export const mocks = {
-  collections,
+  johndoe: collections,
 };
