@@ -25,6 +25,7 @@ export const CollectionContextProvider = ({ children }) => {
       });
   }, []);
 
+  //do not need to search for anything here because all collections are recieved on mount
   const onSearch = (searchKeyword) => {
     setIsLoading(true);
     setUser(searchKeyword);

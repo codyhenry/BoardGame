@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { FlatList } from "react-native";
 import styled from "styled-components/native";
 
+//search bar here will not reach api
 import { Search } from "../components/search.component";
 import { SafeArea } from "../../../components/safe-area.component";
 import { Spacer } from "../../../components/spacer.component";

@@ -8,21 +8,22 @@ const SearchContainer = styled.View`
   padding: ${(props) => props.theme.spacing.sm};
 `;
 
+//change to only search games object locally
 export const Search = () => {
-  //destructure keyword and search props from collectionContext
-  const { keyword, search } = useContext(CollectionContext);
-  const [searchKeyword, setSearchKeyword] = useState(keyword);
+  //destructure user and search props from collectionContext
+  const { user, search } = useContext(CollectionContext);
+  const [searchUser, setSearchUser] = useState(user);
   useEffect(() => {
-    setSearchKeyword(keyword);
-  }, [keyword]);
+    setSearchUser(user);
+  }, [user]);
   return (
     <SearchContainer>
       <Searchbar
         placeholder="Search for a collection"
-        value={searchKeyword}
-        onSubmitEditing={() => search(searchKeyword)}
+        value={searchUser}
+        onSubmitEditing={() => search(searchUser)}
         onChangeText={(text) => {
-          setSearchKeyword(text);
+          setSearchUser(text);
         }}
       />
     </SearchContainer>

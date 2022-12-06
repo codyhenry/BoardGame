@@ -1,6 +1,7 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect, createContext, useContext } from "react";
 
 import { gamesRequest, gamesTransform } from "./games.service";
+import { CollectionContext } from "../collections/collections.context";
 
 export const GamesContext = createContext();
 
@@ -9,6 +10,7 @@ export const GamesContextProvider = ({ children }) => {
   //const [keyword, setKeyword] = useState("favorites");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const collectionContext = useContext(CollectionContext);
 
   const retrieveGames = () => {
     setIsLoading(true);
