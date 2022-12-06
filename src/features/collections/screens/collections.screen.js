@@ -1,10 +1,16 @@
-import { SafeAreaView, FlatList } from "react-native";
-import { Searchbar } from "react-native-paper";
+import { useContext } from "react";
+import { FlatList } from "react-native";
 import styled from "styled-components/native";
 
+//search bar here will not reach api
+import { Search } from "../components/search.component";
+import { SafeArea } from "../../../components/safe-area.component";
 import { Spacer } from "../../../components/spacer.component";
-
+import { LoadingComponent } from "../../../components/activity-indicator.component";
 import { CollectionInfoCard } from "../components/collection-info-card.component";
+import { ErrorScreen } from "../../../components/error.component";
+
+import { CollectionsContext } from "../../../services/collections/collections.context";
 
 const CollectionList = styled(FlatList).attrs({
   contentContainerStyle: {
@@ -13,18 +19,26 @@ const CollectionList = styled(FlatList).attrs({
 })``;
 
 export const CollectionsScreen = () => {
+  //TODO: add a button to create new collection
+  const { collections, isLoading, error } = useContext(CollectionsContext);
+
   return (
-    <SafeAreaView>
-      <Searchbar />
-      <CollectionList
-        data={[{ name: 1 }, { name: 2 }]}
-        renderItem={() => (
-          <Spacer side="bottom" size="md">
-            <CollectionInfoCard />
-          </Spacer>
-        )}
-        keyExtractor={(item) => item.name}
-      />
-    </SafeAreaView>
+    <SafeArea>
+      <Search />
+      {error && <ErrorScreen errorMessage={error} />}
+      {!error && isLoading ? (
+        <LoadingComponent />
+      ) : (
+        <CollectionList
+          data={collections}
+          renderItem={({ item }) => (
+            <Spacer side="bottom" size="md">
+              <CollectionInfoCard collection={item} />
+            </Spacer>
+          )}
+          keyExtractor={(item) => item.name}
+        />
+      )}
+    </SafeArea>
   );
 };

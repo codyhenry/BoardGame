@@ -14,12 +14,13 @@ export const gameImages = [
   "https://upload.wikimedia.org/wikipedia/en/5/5e/Carcassonne-game.jpg",
 ];
 
+//add old price and current price values to data
 export const mocks = {
-  dontbuy,
-  favorites,
-  forsale,
-  kickstarter,
-  watchlist,
+  "dont buy": dontbuy,
+  favorites: favorites,
+  "for sale": forsale,
+  kickstarter: kickstarter,
+  watchlist: watchlist,
 };
 
 //use board game atlas to get canada, britain, australia prices
