@@ -19,6 +19,8 @@ export const collectionRequest = (userName = "JohnDoe") => {
   });
 };
 
-export const collectionTransform = (result) => {
-  return result;
+export const collectionTransform = (result = []) => {
+  const newResult = camelize(result);
+
+  return newResult.results;
 };
