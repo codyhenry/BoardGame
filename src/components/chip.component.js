@@ -5,7 +5,7 @@ const chipColor = {
   owned: "#f3722c",
   custom: "#6c757d",
   wishlist: "#ef476f",
-  selling: "#073b4c",
+  selling: "#084B83",
   crowdfund: "#43aa8b",
 };
 
