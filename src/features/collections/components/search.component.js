@@ -8,7 +8,7 @@ const SearchContainer = styled.View`
   padding: ${(props) => props.theme.spacing.sm};
 `;
 
-//change to only search games object locally
+//will search for games
 export const Search = () => {
   //destructure user and search props from collectionContext
   const { user, search } = useContext(CollectionsContext);

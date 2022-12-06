@@ -4,9 +4,6 @@ import camelize from "camelize";
 import { mocks } from "./mock";
 
 //get collections based on user
-//async search waiting on client side collections and firestore games
-//searching for collections happens client side
-//should search an index in firestore containing {games: collections}
 //return all collections
 export const collectionRequest = (userName = "JohnDoe") => {
   return new Promise((resolve, reject) => {
@@ -19,6 +16,8 @@ export const collectionRequest = (userName = "JohnDoe") => {
   });
 };
 
-export const collectionTransform = (result) => {
-  return result;
+export const collectionTransform = (result = []) => {
+  const newResult = camelize(result);
+
+  return newResult.results;
 };
