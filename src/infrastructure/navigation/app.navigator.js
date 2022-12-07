@@ -29,7 +29,7 @@ export const AppNavigator = () => (
           //You can return any component that you like here!
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: theme.colors.brand.secondary,
+        tabBarActiveTintColor: theme.colors.brand.primary,
         tabBarInactiveTintColor: theme.colors.ui.secondary,
         headerShown: false,
       })}
@@ -39,8 +39,8 @@ export const AppNavigator = () => (
         name="Collections"
         component={CollectionsNavigator}
       />
-      <Tab.Screen name="Market" component={Market} />
-      <Tab.Screen name="Search" component={Search} />
+      <Tab.Screen name="Market" component={MarketScreen} />
+      <Tab.Screen name="Search" component={SearchScreen} />
     </Tab.Navigator>
   </NavigationContainer>
 );

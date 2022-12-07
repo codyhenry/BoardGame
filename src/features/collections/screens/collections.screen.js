@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { FlatList } from "react-native";
+import { FlatList, Pressable } from "react-native";
 import styled from "styled-components/native";
 
 //search bar here will not reach api
@@ -18,7 +18,7 @@ const CollectionList = styled(FlatList).attrs({
   },
 })``;
 
-export const CollectionsScreen = () => {
+export const CollectionsScreen = ({ navigation }) => {
   //TODO: add a button to create new collection
   const { collections, isLoading, error } = useContext(CollectionsContext);
 
@@ -32,8 +32,15 @@ export const CollectionsScreen = () => {
         <CollectionList
           data={collections}
           renderItem={({ item }) => (
-            <Spacer side="bottom" size="md">
-              <CollectionInfoCard collection={item} />
+            <Spacer side="bottom" size="xs">
+              <Pressable
+                onPress={() =>
+                  navigation.navigate("CollectionDetail", { collection: item })
+                }
+                style={({ pressed }) => [{ opacity: pressed ? 0.5 : 1 }]}
+              >
+                <CollectionInfoCard collection={item} />
+              </Pressable>
             </Spacer>
           )}
           keyExtractor={(item) => item.name}
