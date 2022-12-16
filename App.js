@@ -14,8 +14,10 @@ import {
 } from "@expo-google-fonts/prompt";
 
 import { Text } from "react-native";
+//import {AuthenticationContextProvider} from "./src/services/authentication/authentication.context";
 import { GamesContextProvider } from "./src/services/games/games.context";
 import { CollectionsContextProvider } from "./src/services/collections/collections.context";
+import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
 
 import { Navigation } from "./src/infrastructure/navigation/index";
 
@@ -39,11 +41,13 @@ export default function App() {
       ) : (
         <ThemeProvider theme={theme}>
           <ExpoStatusBar style="auto" />
-          <CollectionsContextProvider>
-            <GamesContextProvider>
-              <Navigation />
-            </GamesContextProvider>
-          </CollectionsContextProvider>
+          <AuthenticationContextProvider>
+            <CollectionsContextProvider>
+              <GamesContextProvider>
+                <Navigation />
+              </GamesContextProvider>
+            </CollectionsContextProvider>
+          </AuthenticationContextProvider>
         </ThemeProvider>
       )}
     </>
