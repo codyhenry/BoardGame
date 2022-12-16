@@ -62,6 +62,8 @@ export const AuthenticationContextProvider = ({ children }) => {
           err = "Passwords must be at least 6 characters";
         } else if (err.includes("invalid-email")) {
           err = "Enter a valid email address";
+        } else if (err.includes("email-already-in-use")) {
+          err = "There is already an account with that email";
         }
         setIsLoading(false);
         setError(err);
