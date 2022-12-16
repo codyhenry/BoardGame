@@ -21,26 +21,24 @@ const SearchScreen = () => <Text>Search</Text>;
 const MarketScreen = () => <Text>Market</Text>;
 
 export const AppNavigator = () => (
-  <NavigationContainer>
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName = TAB_ICON[route.name][focused];
-          //You can return any component that you like here!
-          return <Ionicons name={iconName} size={size} color={color} />;
-        },
-        tabBarActiveTintColor: theme.colors.brand.primary,
-        tabBarInactiveTintColor: theme.colors.ui.secondary,
-        headerShown: false,
-      })}
-    >
-      <Tab.Screen
-        //The tabs will contain screens for stack navigation components
-        name="Collections"
-        component={CollectionsNavigator}
-      />
-      <Tab.Screen name="Market" component={MarketScreen} />
-      <Tab.Screen name="Search" component={SearchScreen} />
-    </Tab.Navigator>
-  </NavigationContainer>
+  <Tab.Navigator
+    screenOptions={({ route }) => ({
+      tabBarIcon: ({ focused, color, size }) => {
+        let iconName = TAB_ICON[route.name][focused];
+        //You can return any component that you like here!
+        return <Ionicons name={iconName} size={size} color={color} />;
+      },
+      tabBarActiveTintColor: theme.colors.brand.primary,
+      tabBarInactiveTintColor: theme.colors.ui.secondary,
+      headerShown: false,
+    })}
+  >
+    <Tab.Screen
+      //The tabs will contain screens for stack navigation components
+      name="Collections"
+      component={CollectionsNavigator}
+    />
+    <Tab.Screen name="Market" component={MarketScreen} />
+    <Tab.Screen name="Search" component={SearchScreen} />
+  </Tab.Navigator>
 );
