@@ -18,7 +18,7 @@ const GameList = styled(FlatList).attrs({
   },
 })``;
 
-export const GamesScreen = () => {
+export const GamesScreen = ({ route }) => {
   const { games, isLoading, error } = useContext(GamesContext);
   return (
     <SafeArea>
