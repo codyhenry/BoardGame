@@ -22,6 +22,7 @@ export const gamesRequest = (collection = "favorites") => {
 export const gamesTransform = ({ results = [] }) => {
   const newResult = camelize(results);
   const mappedResults = newResult.map((game) => {
+    //TODO: Photo should come from database
     return {
       ...game,
       photo:
@@ -30,4 +31,12 @@ export const gamesTransform = ({ results = [] }) => {
     };
   });
   return mappedResults;
+};
+
+export const gameAdd = () => {
+  return;
+};
+
+export const gameRemove = () => {
+  return;
 };
