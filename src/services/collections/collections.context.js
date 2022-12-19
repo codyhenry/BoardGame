@@ -6,6 +6,7 @@ export const CollectionsContext = createContext();
 
 export const CollectionsContextProvider = ({ children }) => {
   const [collections, setCollections] = useState([]);
+  const [currentCollectionId, setCurrentCollectionId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -25,6 +26,8 @@ export const CollectionsContextProvider = ({ children }) => {
         console.log(error);
       });
   }, []);
+
+  //every time a collection is selected, change the current id
 
   //do not need to search for anything here because all collections are recieved on mount
   const onSearch = (searchKeyword) => {

@@ -34,8 +34,12 @@ export const CollectionsScreen = ({ navigation }) => {
           renderItem={({ item }) => (
             <Spacer side="bottom" size="xs">
               <Pressable
-                onPress={() =>
-                  navigation.navigate("CollectionDetail", { collection: item })
+                onPress={
+                  () =>
+                    navigation.navigate("CollectionDetail", {
+                      collection: item,
+                    })
+                  //call database if you havent entered the room before
                 }
                 style={({ pressed }) => [{ opacity: pressed ? 0.5 : 1 }]}
               >
