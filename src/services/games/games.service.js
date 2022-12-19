@@ -40,3 +40,7 @@ export const gameAdd = () => {
 export const gameRemove = () => {
   return;
 };
+
+export const gameUpdate = () => {
+  return;
+};

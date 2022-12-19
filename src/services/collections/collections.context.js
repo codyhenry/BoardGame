@@ -1,6 +1,7 @@
 import { useState, useEffect, createContext } from "react";
 
 import { collectionRequest, collectionTransform } from "./collections.service";
+import { AuthenticationContext } from "../authentication/authentication.context";
 
 export const CollectionsContext = createContext();
 
@@ -9,12 +10,12 @@ export const CollectionsContextProvider = ({ children }) => {
   const [currentCollectionId, setCurrentCollectionId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const { user } = useContext(AuthenticationContext);
 
-  const user = "johndoe";
-
+  const userRef = `Users/${user.id}`;
   //display all of a users collections when the page loads
   useEffect(() => {
-    collectionRequest(user)
+    collectionRequest(userRef)
       .then(collectionTransform)
       .then((result) => {
         setIsLoading(false);

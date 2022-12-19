@@ -5,6 +5,7 @@ import {
   gamesTransform,
   gameAdd,
   gameRemove,
+  gameUpdate,
 } from "./games.service";
 import { AuthenticationContext } from "../authentication/authentication.context";
 import { CollectionsContext } from "../collections/collections.context";
@@ -116,7 +117,6 @@ export const GamesContextProvider = ({ children }) => {
       )
       .then(() => {
         setIsActionLoading(false);
-        //update the games list
       })
       .catch((err) => {
         setIsActionLoading(false);
@@ -125,13 +125,14 @@ export const GamesContextProvider = ({ children }) => {
   };
 
   return (
-    <GamesContext.Provider value={{ games, isLoading, error }}>
+    <GamesContext.Provider value={{ games, isLoading, isActionLoading, error }}>
       {children}
     </GamesContext.Provider>
   );
 };
 
 //TODO: The context here will have an object with nested objects inside. Each nested object is one collection of games
+//TODO: function to save the games list to db on ANY change to the game list. Each request does not need its own save function
 
 /*
 var games = {};
