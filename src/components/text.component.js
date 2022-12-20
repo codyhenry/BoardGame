@@ -14,7 +14,7 @@ const body = (theme) => `
 
 const title = (theme) => `
     font-family: ${theme.fonts.headingBold};
-    font-size: ${theme.fontSizes.body};
+    font-size: ${theme.fontSizes.h5};
 `;
 
 const error = (theme) => `

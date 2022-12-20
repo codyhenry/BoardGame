@@ -9,6 +9,7 @@ import { Spacer } from "../../../components/spacer.component";
 import { LoadingComponent } from "../../../components/activity-indicator.component";
 import { CollectionInfoCard } from "../components/collection-info-card.component";
 import { ErrorScreen } from "../../../components/error.component";
+import { AddButton } from "../components/add.component";
 
 import { CollectionsContext } from "../../../services/collections/collections.context";
 
@@ -25,6 +26,7 @@ export const CollectionsScreen = ({ navigation }) => {
   return (
     <SafeArea>
       <Search />
+      <AddButton navigator={navigation} />
       {error && <ErrorScreen errorMessage={error} />}
       {!error && isLoading ? (
         <LoadingComponent />

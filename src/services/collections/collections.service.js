@@ -12,7 +12,7 @@ export const collectionRequest = (userRef) => {
       .then((response) => {
         resolve(response);
       })
-      .catch((err) => reject("Use the '+' to add a new collection!"));
+      .catch(reject);
   });
 };
 
@@ -20,4 +20,8 @@ export const collectionTransform = (result = []) => {
   const newResult = camelize(result);
 
   return newResult.results;
+};
+
+export const collectionAdd = () => {
+  return;
 };

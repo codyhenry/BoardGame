@@ -1,6 +1,10 @@
-import { useState, useEffect, createContext } from "react";
+import { useState, useEffect, createContext, useContext } from "react";
 
-import { collectionRequest, collectionTransform } from "./collections.service";
+import {
+  collectionRequest,
+  collectionTransform,
+  collectionAdd,
+} from "./collections.service";
 import { AuthenticationContext } from "../authentication/authentication.context";
 
 export const CollectionsContext = createContext();
@@ -8,12 +12,14 @@ export const CollectionsContext = createContext();
 export const CollectionsContextProvider = ({ children }) => {
   const [collections, setCollections] = useState([]);
   const [currentCollectionId, setCurrentCollectionId] = useState(null);
+  const [newCollection, setNewCollection] = useState({});
+  const [isActionLoading, setIsActionLoading] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const { user } = useContext(AuthenticationContext);
 
   const userRef = `Users/${user.id}`;
-  //display all of a users collections when the page loads
+  //GET a user's collections
   useEffect(() => {
     collectionRequest(userRef)
       .then(collectionTransform)
@@ -23,10 +29,23 @@ export const CollectionsContextProvider = ({ children }) => {
       })
       .catch((error) => {
         setIsLoading(false);
-        setError(error);
-        console.log(error);
+        setError("Use the '+' to add a new collection!");
       });
   }, []);
+
+  //ADD a new collection to a user
+  const addCollection = () => {
+    setIsActionLoading(true);
+    collectionAdd(user.uid)
+      .then(addToList(result.id))
+      .then(() => {
+        setIsActionLoading(false);
+      })
+      .catch((err) => {
+        setIsActionLoading(false);
+        setError(err);
+      });
+  };
 
   //every time a collection is selected, change the current id
 
@@ -38,7 +57,14 @@ export const CollectionsContextProvider = ({ children }) => {
 
   return (
     <CollectionsContext.Provider
-      value={{ isLoading, error, collections, search: onSearch, user }}
+      value={{
+        isLoading,
+        error,
+        collections,
+        search: onSearch,
+        user,
+        addNew: addCollection,
+      }}
     >
       {children}
     </CollectionsContext.Provider>

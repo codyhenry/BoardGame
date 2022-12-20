@@ -1,4 +1,4 @@
-import { useState, useReducer, createContext, useContext } from "react";
+import { useState, createContext, useContext } from "react";
 
 import {
   gamesRequest,

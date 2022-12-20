@@ -2,6 +2,7 @@ import React from "react";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { CollectionsScreen } from "../../features/collections/screens/collections.screen";
+import { Popup } from "../../features/collections/components/popup.component";
 //game screen
 // import { CollectionDetailScreen } from "../../features/restaurants/screens/restaurant-detail.screen";
 //Need game screen to show all of the games in a collection
@@ -26,6 +27,15 @@ export const CollectionsNavigator = () => {
         name="CollectionsStackNav"
         component={CollectionsScreen}
         options={{ headerShown: false }}
+      />
+      <CollectionStack.Screen
+        name="CollectionForm"
+        component={Popup}
+        options={{
+          headerShown: false,
+          presentation: "transparentModal",
+          cardOverlayEnabled: true,
+        }}
       />
       <CollectionStack.Screen
         name="CollectionDetail"
