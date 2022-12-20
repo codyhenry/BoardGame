@@ -10,15 +10,18 @@ import { AuthenticationContext } from "../authentication/authentication.context"
 export const CollectionsContext = createContext();
 
 export const CollectionsContextProvider = ({ children }) => {
+  //for printing a users collections to screen
   const [collections, setCollections] = useState([]);
+  //updates when a collection is entered. Used for db route
   const [currentCollectionId, setCurrentCollectionId] = useState(null);
-  const [newCollection, setNewCollection] = useState({});
+  //load action buttons instead of screen
   const [isActionLoading, setIsActionLoading] = useState(false);
+  //load screen
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const { user } = useContext(AuthenticationContext);
 
-  const userRef = `Users/${user.id}`;
+  const userRef = `Users/${user.uid}`;
   //GET a user's collections
   useEffect(() => {
     collectionRequest(userRef)
@@ -26,20 +29,41 @@ export const CollectionsContextProvider = ({ children }) => {
       .then((result) => {
         setIsLoading(false);
         setCollections(result);
+        collections.length >= 1
+          ? setError(null)
+          : setError("Use the '+' to add a new collection!");
       })
       .catch((error) => {
+        console.log(error);
         setIsLoading(false);
-        setError("Use the '+' to add a new collection!");
       });
   }, []);
 
+  const createCollection = (collectionName, collectionCategory) => {
+    const newCollection = {
+      name: collectionName,
+      type: collectionCategory,
+      numGames: 0,
+    };
+    return newCollection;
+  };
+
+  const addToList = (newCol, collectionId) => {
+    newCol.id = collectionId;
+    setCollections([...collections, newCol]);
+  };
+
   //ADD a new collection to a user
-  const addCollection = () => {
+  const addCollection = (name, category) => {
     setIsActionLoading(true);
-    collectionAdd(user.uid)
-      .then(addToList(result.id))
+    const newCol = createCollection(name, category);
+    collectionAdd(userRef, newCol)
+      .then((result) => {
+        addToList(newCol, result.id);
+      })
       .then(() => {
         setIsActionLoading(false);
+        error && setError(null);
       })
       .catch((err) => {
         setIsActionLoading(false);
@@ -59,6 +83,7 @@ export const CollectionsContextProvider = ({ children }) => {
     <CollectionsContext.Provider
       value={{
         isLoading,
+        isActionLoading,
         error,
         collections,
         search: onSearch,

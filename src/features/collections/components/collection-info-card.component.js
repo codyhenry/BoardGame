@@ -5,13 +5,14 @@ import {
   SectionEnd,
 } from "../../../components/info-card.styles";
 import { CustomText } from "../../../components/text.component";
-import { CustomChip } from "../../../components/chip.component";
+import { CollectionChip } from "../../../components/chip.component";
 
 export const CollectionInfoCard = ({ collection = {} }) => {
   const {
     name = "Some Collection",
-    collectionTag = "wishlist",
+    type = "wishlist",
     numGames = 60,
+    id,
     //totalPledgeValue,
   } = collection;
   return (
@@ -23,7 +24,7 @@ export const CollectionInfoCard = ({ collection = {} }) => {
         <Section>
           <CustomText variant="caption">{numGames} Items</CustomText>
           <SectionEnd>
-            <CustomChip category={collectionTag} />
+            <CollectionChip category={type} />
           </SectionEnd>
         </Section>
       </Info>

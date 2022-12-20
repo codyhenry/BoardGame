@@ -1,12 +1,14 @@
 import { useState, useContext } from "react";
 import styled from "styled-components/native";
-import { TextInput, Button } from "react-native-paper";
+import { TextInput, Button, ActivityIndicator } from "react-native-paper";
 
 import { SelectChip } from "../../../components/chip.component";
 import { Spacer } from "../../../components/spacer.component";
 import { colors } from "../../../infrastructure/theme/colors";
+import { CustomText } from "../../../components/text.component";
 
 import { CollectionsContext } from "../../../services/collections/collections.context";
+import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 
 //TODO: add scrollview to click off of text input
 
@@ -27,6 +29,11 @@ const FormContainer = styled.View`
   padding-bottom: 5px;
 `;
 
+const LoadingIndicator = styled(ActivityIndicator).attrs({
+  animating: true,
+  color: colors.brand.primary,
+})``;
+
 const NameInput = styled(TextInput).attrs((props) => ({
   mode: "outlined",
   activeOutlineColor: colors.text.primary,
@@ -38,68 +45,99 @@ const NameInput = styled(TextInput).attrs((props) => ({
   background-color: white;
 `;
 
+const FormCover = styled.ScrollView``;
+
 export const CollectionForm = ({ navigator }) => {
   const [collectionCategory, setCollectionCategory] = useState("owned");
   const [collectionName, setCollectionName] = useState("");
+  const { addNew, isActionLoading } = useContext(CollectionsContext);
+  const { onLogout } = useContext(AuthenticationContext);
+
+  const handleAddPress = () => {
+    addNew(collectionName, collectionCategory);
+    navigator.goBack();
+  };
 
   return (
     <FormContainer>
-      <NameInput label="Collection Name" />
-      <Section>
-        <SelectChip
-          selected={collectionCategory == "owned"}
-          category="owned"
-          onPress={() => {
-            setCollectionCategory("owned");
-          }}
+      <FormCover>
+        <Section>
+          <CustomText variant="title">Add a new collection</CustomText>
+        </Section>
+        <NameInput
+          label="Collection Name"
+          value={collectionName}
+          onChangeText={(text) => setCollectionName(text)}
         />
-        <Spacer side="right" size="xs" />
-        <SelectChip
-          selected={collectionCategory == "selling"}
-          category="selling"
-          onPress={() => {
-            setCollectionCategory("selling");
-          }}
-        />
-      </Section>
-      <Section>
-        <SelectChip
-          selected={collectionCategory == "wishlist"}
-          category="wishlist"
-          onPress={() => {
-            setCollectionCategory("wishlist");
-          }}
-        />
-        <Spacer side="right" size="xs" />
-        <SelectChip
-          selected={collectionCategory == "crowdfund"}
-          category="crowdfund"
-          onPress={() => {
-            setCollectionCategory("crowdfund");
-          }}
-        />
-      </Section>
-      <Spacer size="lg" />
-      <Section>
-        <SectionEnd>
-          <Button
-            color={colors.brand.primary}
-            uppercase={false}
-            mode="contained"
-            onPress={() => console.log("added")}
-          >
-            Add
-          </Button>
-          <Button
-            color="red"
-            uppercase={false}
-            onPress={() => navigator.goBack()}
-            mode="text"
-          >
-            Close
-          </Button>
-        </SectionEnd>
-      </Section>
+        <Section>
+          <SelectChip
+            selected={collectionCategory == "owned"}
+            category="owned"
+            onPress={() => {
+              setCollectionCategory("owned");
+            }}
+          />
+          <Spacer side="right" size="xs" />
+          <SelectChip
+            selected={collectionCategory == "selling"}
+            category="selling"
+            onPress={() => {
+              setCollectionCategory("selling");
+            }}
+          />
+        </Section>
+        <Section>
+          <SelectChip
+            selected={collectionCategory == "wishlist"}
+            category="wishlist"
+            onPress={() => {
+              setCollectionCategory("wishlist");
+            }}
+          />
+          <Spacer side="right" size="xs" />
+          <SelectChip
+            selected={collectionCategory == "crowdfund"}
+            category="crowdfund"
+            onPress={() => {
+              setCollectionCategory("crowdfund");
+            }}
+          />
+        </Section>
+        <Spacer size="lg" />
+        <Section>
+          <SectionEnd>
+            {isActionLoading ? (
+              <LoadingIndicator />
+            ) : (
+              <Button
+                color={colors.brand.primary}
+                uppercase={false}
+                mode="contained"
+                disabled={collectionName.trim() == "" || isActionLoading}
+                onPress={() => handleAddPress()}
+              >
+                Add
+              </Button>
+            )}
+            <Button
+              color="red"
+              uppercase={false}
+              onPress={() => navigator.goBack()}
+              mode="text"
+            >
+              Close
+            </Button>
+            <Button
+              color="red"
+              uppercase={false}
+              onPress={() => onLogout()}
+              mode="text"
+            >
+              LogOut
+            </Button>
+          </SectionEnd>
+        </Section>
+      </FormCover>
     </FormContainer>
   );
 };

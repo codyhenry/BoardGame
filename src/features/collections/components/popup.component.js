@@ -1,7 +1,6 @@
 import styled from "styled-components/native";
 import { Pressable } from "react-native";
 
-import { CustomText } from "../../../components/text.component";
 import { CollectionForm } from "./form.component";
 import { Spacer } from "../../../components/spacer.component";
 
@@ -39,10 +38,8 @@ export const Popup = ({ navigation }) => {
       <ModalCard>
         <Spacer size="sm" />
         <Section>
-          <CustomText variant="title">Add a new collection</CustomText>
           <CollectionForm navigator={navigation} />
         </Section>
-
         <Spacer size="sm" />
       </ModalCard>
     </ModalScreen>

@@ -20,9 +20,7 @@ const CollectionList = styled(FlatList).attrs({
 })``;
 
 export const CollectionsScreen = ({ navigation }) => {
-  //TODO: add a button to create new collection
   const { collections, isLoading, error } = useContext(CollectionsContext);
-
   return (
     <SafeArea>
       <Search />
@@ -49,7 +47,7 @@ export const CollectionsScreen = ({ navigation }) => {
               </Pressable>
             </Spacer>
           )}
-          keyExtractor={(item) => item.name}
+          keyExtractor={(item) => item.id}
         />
       )}
     </SafeArea>
