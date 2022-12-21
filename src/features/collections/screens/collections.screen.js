@@ -36,7 +36,7 @@ export const CollectionsScreen = ({ navigation }) => {
               <Pressable
                 onPress={
                   () =>
-                    navigation.navigate("CollectionDetail", {
+                    navigation.navigate("GamesHome", {
                       collection: item,
                     })
                   //call database if you havent entered the room before

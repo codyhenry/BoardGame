@@ -9,6 +9,7 @@ import { Spacer } from "../../../components/spacer.component";
 import { LoadingComponent } from "../../../components/activity-indicator.component";
 import { GameInfoCard } from "../components/game-info-card.component";
 import { ErrorScreen } from "../../../components/error.component";
+import { AddButton } from "../components/add.component";
 
 import { GamesContext } from "../../../services/games/games.context";
 
@@ -18,11 +19,12 @@ const GameList = styled(FlatList).attrs({
   },
 })``;
 
-export const GamesScreen = ({ route }) => {
+export const GamesScreen = ({ route, navigation }) => {
   const { games, isLoading, error } = useContext(GamesContext);
   return (
     <SafeArea>
       <Search />
+      <AddButton navigator={navigation} />
       {error && <ErrorScreen errorMessage={error} />}
       {!error && isLoading ? (
         <LoadingComponent />

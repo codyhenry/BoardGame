@@ -8,7 +8,7 @@ import {
 } from "../../../components/info-card.styles";
 import { CustomText } from "../../../components/text.component";
 
-//TODO: figure out if I need to make multiple components for different categories
+//TODO: create an info card for each collectionType
 export const GameInfoCard = ({ game = {} }) => {
   const {
     name = "Some Game",
@@ -69,4 +69,4 @@ export const GameInfoCard = ({ game = {} }) => {
   );
 };
 
-//TODO make an info card for each category of game (wishlist, owned, custom, selling, kickstarter)
+//TODO make an info card for each category of game (wishlist, basic, selling, kickstarter)

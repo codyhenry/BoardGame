@@ -12,8 +12,6 @@ export const CollectionsContext = createContext();
 export const CollectionsContextProvider = ({ children }) => {
   //for printing a users collections to screen
   const [collections, setCollections] = useState([]);
-  //updates when a collection is entered. Used for db route
-  const [currentCollectionId, setCurrentCollectionId] = useState(null);
   //load action buttons instead of screen
   const [isActionLoading, setIsActionLoading] = useState(false);
   //load screen
@@ -29,12 +27,12 @@ export const CollectionsContextProvider = ({ children }) => {
       .then((result) => {
         setIsLoading(false);
         setCollections(result);
-        collections.length >= 1
+        result.length > 0
           ? setError(null)
           : setError("Use the '+' to add a new collection!");
       })
       .catch((error) => {
-        console.log(error);
+        setError(error);
         setIsLoading(false);
       });
   }, []);

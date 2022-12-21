@@ -1,5 +1,4 @@
 //update the mock data to hold multiple collections. Only one collection currently exists
-import camelize from "camelize";
 import { db } from "../../../firebase.config";
 import { collection, getDocs, addDoc } from "firebase/firestore";
 
@@ -16,10 +15,12 @@ export const collectionRequest = (userRef) => {
   });
 };
 
+//append documentid to collection document
 export const collectionTransform = (result = {}) => {
   var collections = [];
   result.forEach((doc) => {
-    collections.push(doc.data());
+    var temp = { ...doc.data(), id: doc.id };
+    collections.push(temp);
   });
 
   return collections;

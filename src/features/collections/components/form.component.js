@@ -38,7 +38,6 @@ const NameInput = styled(TextInput).attrs((props) => ({
   mode: "outlined",
   activeOutlineColor: colors.text.primary,
   clearButtonMode: "while-editing",
-  autoCapitalize: "none",
   dense: true,
 }))`
   width: 300px;
@@ -47,8 +46,9 @@ const NameInput = styled(TextInput).attrs((props) => ({
 
 const FormCover = styled.ScrollView``;
 
+//TODO: move all styling
 export const CollectionForm = ({ navigator }) => {
-  const [collectionCategory, setCollectionCategory] = useState("owned");
+  const [collectionCategory, setCollectionCategory] = useState("basic");
   const [collectionName, setCollectionName] = useState("");
   const { addNew, isActionLoading } = useContext(CollectionsContext);
   const { onLogout } = useContext(AuthenticationContext);
@@ -71,10 +71,10 @@ export const CollectionForm = ({ navigator }) => {
         />
         <Section>
           <SelectChip
-            selected={collectionCategory == "owned"}
-            category="owned"
+            selected={collectionCategory == "basic"}
+            category="basic"
             onPress={() => {
-              setCollectionCategory("owned");
+              setCollectionCategory("basic");
             }}
           />
           <Spacer side="right" size="xs" />

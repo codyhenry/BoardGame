@@ -2,8 +2,7 @@ import styled from "styled-components/native";
 import { Chip } from "react-native-paper";
 
 const chipColor = {
-  owned: "#f3722c",
-  custom: "#6c757d",
+  basic: "#f3722c",
   wishlist: "#ef476f",
   selling: "#084B83",
   crowdfund: "#43aa8b",
@@ -14,7 +13,7 @@ export const CollectionChip = styled(Chip).attrs((props) => {
 })`
   background-color: ${(props) => chipColor[props.category]};
 `;
-CollectionChip.defaultProps = { category: "owned" };
+CollectionChip.defaultProps = { category: "basic" };
 
 export const SelectChip = styled(Chip).attrs((props) => {
   return {

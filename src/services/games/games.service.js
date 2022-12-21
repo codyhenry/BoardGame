@@ -1,19 +1,15 @@
 import { mocks, gameImages, links } from "./mock";
-import camelize from "camelize";
+import { collection, getDocs, addDoc } from "firebase/firestore";
 
-//collection will either be search keyword or button press
-//get games based on collection and search term return only what matches both
-//searching for a game while in a collecton is done client side.
-//searching for a game while outside a collection is done server side
-//in collection search bar will not extend beyond client side
-export const gamesRequest = (collection = "favorites") => {
+//GET all games from a collection
+export const gamesRequest = (userRef, collectionId) => {
+  const collectionPath = `${userRef}/Collections/${collectionId}`;
   return new Promise((resolve, reject) => {
-    //returns all games belonging to a particular collection
-    const gameMock = mocks[collection];
-    if (!gameMock) {
-      reject("Sorry, no results match your search");
-    }
-    resolve(gameMock);
+    getDocs(collection(db, collectionPath))
+      .then((response) => {
+        resolve(response);
+      })
+      .catch(reject);
   });
 };
 
@@ -33,6 +29,7 @@ export const gamesTransform = ({ results = [] }) => {
   return mappedResults;
 };
 
+//update the collection numGames count +1
 export const gameAdd = () => {
   return;
 };

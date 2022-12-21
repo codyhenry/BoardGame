@@ -10,9 +10,13 @@ import { Popup } from "../../features/collections/components/popup.component";
 //title will be the name of the collection that was selected
 import { Text } from "react-native";
 
-const CollectionsDetail = ({ route }) => {
+const GamesScreen = ({ route, navigation }) => {
   console.log(route.params.collection);
-  return <Text>Market</Text>;
+  return <Text>Games</Text>;
+};
+const GameDetail = ({ route, navigation }) => {
+  console.log(route.params.collection);
+  return <Text>Game Info</Text>;
 };
 
 const CollectionStack = createNativeStackNavigator();
@@ -24,7 +28,7 @@ export const CollectionsNavigator = () => {
       }}
     >
       <CollectionStack.Screen
-        name="CollectionsStackNav"
+        name="CollectionsHome"
         component={CollectionsScreen}
         options={{ headerShown: false }}
       />
@@ -38,9 +42,14 @@ export const CollectionsNavigator = () => {
         }}
       />
       <CollectionStack.Screen
-        name="CollectionDetail"
-        component={CollectionsDetail}
-        options={{ title: "Detail" }}
+        name="GamesHome"
+        component={GamesScreen}
+        options={{ headerShown: false }}
+      />
+      <CollectionStack.Screen
+        name="GameDetail"
+        component={GameDetail}
+        options={{ headerShown: false }}
       />
     </CollectionStack.Navigator>
   );
