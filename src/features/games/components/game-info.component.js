@@ -1,5 +1,3 @@
-import { useMemo } from "react";
-
 import { BasicGameInfoCard } from "./basic-games/basic-game-card.component";
 import { WishlistGameInfoCard } from "./wishlist-games/wishlist-game-card.component";
 import { SellingGameInfoCard } from "./selling-games/selling-game-card-component";
@@ -16,5 +14,4 @@ export const InfoCardToRender = (type, item) => {
     case "crowdfund":
       return <CrowdfundGameInfoCard game={item} />;
   }
-  return ComponentToRender;
 };

@@ -25,13 +25,14 @@ const Divider = styled.View`
   height: 2px;
 `;
 
-export const GameDetailScreen = ({ route }) => {
-  const { game } = route.params;
+export const BasicGameDetailScreen = ({ game }) => {
+  console.log("In detail screen basic");
+  console.log(game);
   const [isEditing, setIsEditing] = useState(false);
   const [notes, setNotes] = useState(game.notes);
   return (
     <>
-      <BasicGameInfoCard />
+      <BasicGameInfoCard game={game} />
       <ScrollView>
         <Spacer size="md" />
         <Section>

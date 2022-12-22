@@ -23,7 +23,6 @@ export const CollectionsScreen = ({ navigation }) => {
   const { collections, isLoading, error } = useContext(CollectionsContext);
   return (
     <SafeArea>
-      <Search />
       <AddButton navigator={navigation} />
       {error && <ErrorScreen errorMessage={error} />}
       {!error && isLoading ? (

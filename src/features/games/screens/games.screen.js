@@ -11,8 +11,7 @@ import { InfoCardToRender } from "../components/game-info.component";
 import { ErrorScreen } from "../../../components/error.component";
 // import { AddButton } from "../components/add.component";
 
-import { GamesContext } from "../../../services/games/games.context";
-import { Prompt_600SemiBold } from "@expo-google-fonts/prompt";
+// import { GamesContext } from "../../../services/games/games.context";
 
 const GameList = styled(FlatList).attrs({
   contentContainerStyle: {
@@ -53,6 +52,7 @@ export const GamesScreen = ({ route, navigation }) => {
               onPress={() =>
                 navigation.navigate("GameDetail", {
                   game: item,
+                  category: type,
                 })
               }
               style={({ pressed }) => [{ opacity: pressed ? 0.5 : 1 }]}

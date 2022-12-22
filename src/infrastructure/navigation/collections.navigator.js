@@ -5,7 +5,7 @@ import { CollectionsScreen } from "../../features/collections/screens/collection
 import { Popup } from "../../features/collections/components/popup.component";
 //game screen
 import { GamesScreen } from "../../features/games/screens/games.screen";
-import { GameDetailScreen } from "../../features/games/components/basic-games/basic-game-detail.screen";
+import { GameDetail } from "../../features/games/components/game-detail-card.component";
 //Need game screen to show all of the games in a collection
 //Need game detail screen to show info about a single game
 //title will be the name of the collection that was selected
@@ -35,7 +35,7 @@ export const CollectionsNavigator = () => {
       />
       <CollectionStack.Screen
         name="GameDetail"
-        component={GameDetailScreen}
+        component={GameDetail}
         options={{ headerShown: false, presentation: "modal" }}
       />
       <CollectionStack.Screen
