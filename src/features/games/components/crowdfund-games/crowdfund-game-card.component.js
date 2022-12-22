@@ -5,46 +5,28 @@ import {
   Info,
   Section,
   SectionEnd,
-} from "../../../components/info-card.styles";
-import { CustomText } from "../../../components/text.component";
+} from "../../../../components/info-card.styles";
+import { CustomText } from "../../../../components/text.component";
 
 //TODO: create an info card for each collectionType
-export const GameInfoCard = ({ game = {} }) => {
+export const CrowdfundGameInfoCard = ({ game = {} }) => {
   const {
     name = "Some Game",
     photo = "https://upload.wikimedia.org/wikipedia/en/a/a3/Catan-2015-boxart.jpg",
-    links = [
-      "amazon.com",
-      "target.com",
-      "miniaturemarket.com",
-      "bgg.com",
-      "kickstarter.com",
-    ],
-    year = 2015,
-    bestPrice = 100.0,
-    playTime = 30,
-    minPlayers = 1,
-    maxPlayers = 3,
+    links = ["kickstarter.com"],
     notes = [],
-    pledgeEndDate = new Date().toLocaleDateString("en-GB", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    }),
+    //TODO: figure out correct date format
+    pledgeEnd = "4 days to go",
     estimatedDelivery = new Date().toLocaleDateString("en-GB", {
       year: "numeric",
       month: "2-digit",
       day: "2-digit",
     }),
     funded = false,
-    sold = true,
-    condition = "",
-    soldDate = new Date().toLocaleDateString("en-GB", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    }),
-    //SELLING: Condition (chips: red=damaged, orange=worn, yellow=like new, green=new in shrink), number of duplicate games to sell
+    pledgeLevel = "",
+    pledgeValue = 5,
+
+    // }),
   } = game;
   return (
     <InfoCard elevation={5}>
@@ -60,9 +42,13 @@ export const GameInfoCard = ({ game = {} }) => {
           <CustomText variant="label">{name} </CustomText>
         </Section>
         <Section>
-          <CustomText variant="caption">published: {year}</CustomText>
+          {funded ? (
+            <CustomText variant="success">Funding Complete</CustomText>
+          ) : (
+            <CustomText variant="error">Funding Incomplete</CustomText>
+          )}
           <SectionEnd>
-            <CustomText variant="label">${bestPrice}</CustomText>
+            <CustomText variant="label">{pledgeEnd}</CustomText>
           </SectionEnd>
         </Section>
       </Info>

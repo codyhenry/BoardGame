@@ -5,40 +5,19 @@ import {
   Info,
   Section,
   SectionEnd,
-} from "../../../components/info-card.styles";
-import { CustomText } from "../../../components/text.component";
+} from "../../../../components/info-card.styles";
+import { CustomText } from "../../../../components/text.component";
 
-//TODO: create an info card for each collectionType
-export const GameInfoCard = ({ game = {} }) => {
+export const SellingGameInfoCard = ({ game = {} }) => {
   const {
     name = "Some Game",
     photo = "https://upload.wikimedia.org/wikipedia/en/a/a3/Catan-2015-boxart.jpg",
-    links = [
-      "amazon.com",
-      "target.com",
-      "miniaturemarket.com",
-      "bgg.com",
-      "kickstarter.com",
-    ],
+    links = ["amazon.com"],
     year = 2015,
     bestPrice = 100.0,
-    playTime = 30,
-    minPlayers = 1,
-    maxPlayers = 3,
     notes = [],
-    pledgeEndDate = new Date().toLocaleDateString("en-GB", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    }),
-    estimatedDelivery = new Date().toLocaleDateString("en-GB", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    }),
-    funded = false,
-    sold = true,
     condition = "",
+    sold = true,
     soldDate = new Date().toLocaleDateString("en-GB", {
       year: "numeric",
       month: "2-digit",
@@ -69,5 +48,3 @@ export const GameInfoCard = ({ game = {} }) => {
     </InfoCard>
   );
 };
-
-//TODO make an info card for each category of game (wishlist, basic, selling, kickstarter)

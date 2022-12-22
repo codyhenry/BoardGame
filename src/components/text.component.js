@@ -9,26 +9,30 @@ const defaultTextStyles = (theme) => `
 `;
 
 const body = (theme) => `
-    font-size: ${theme.fontSizes.body};
+  font-size: ${theme.fontSizes.body};
 `;
 
 const title = (theme) => `
-    font-family: ${theme.fonts.headingBold};
-    font-size: ${theme.fontSizes.h5};
+  font-family: ${theme.fonts.headingBold};
+  font-size: ${theme.fontSizes.h5};
 `;
 
 const error = (theme) => `
-    color: ${theme.colors.text.error};
+  color: ${theme.colors.text.error};
+`;
+
+const success = (theme) => `
+  color: ${theme.colors.text.success};
 `;
 
 const caption = (theme) => `
 font-family: ${theme.fonts.bodyBold};
-    font-size: ${theme.fontSizes.caption};
+  font-size: ${theme.fontSizes.caption};
 `;
 
 const label = (theme) => `
-    font-family: ${theme.fonts.headingMedium};
-    font-size: ${theme.fontSizes.body};
+  font-family: ${theme.fonts.headingMedium};
+  font-size: ${theme.fontSizes.body};
 `;
 
 const variants = {
@@ -36,6 +40,7 @@ const variants = {
   label,
   caption,
   error,
+  success,
   title,
 };
 

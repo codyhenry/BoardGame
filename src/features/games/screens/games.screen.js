@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { FlatList } from "react-native";
+import { FlatList, Pressable } from "react-native";
 import styled from "styled-components/native";
 
 //search bar here will not reach api
@@ -7,9 +7,9 @@ import { Search } from "../components/search.component";
 import { SafeArea } from "../../../components/safe-area.component";
 import { Spacer } from "../../../components/spacer.component";
 import { LoadingComponent } from "../../../components/activity-indicator.component";
-import { GameInfoCard } from "../components/game-info-card.component";
+import { InfoCardToRender } from "../components/game-info.component";
 import { ErrorScreen } from "../../../components/error.component";
-import { AddButton } from "../components/add.component";
+// import { AddButton } from "../components/add.component";
 
 import { GamesContext } from "../../../services/games/games.context";
 
@@ -20,11 +20,27 @@ const GameList = styled(FlatList).attrs({
 })``;
 
 export const GamesScreen = ({ route, navigation }) => {
-  const { games, isLoading, error } = useContext(GamesContext);
+  // const { games, isLoading, error } = useContext(GamesContext);
+  //type is used to select appropriate Game info card component
+  const { id, type } = route.params.collection;
+  const games = [
+    { name: "Catan", year: 1995 },
+    {
+      name: "Gloomhaven",
+      year: 2016,
+      playTime: 30,
+      minPlayers: 1,
+      maxPlayers: 3,
+      notes: "Notes test",
+    },
+  ];
+  const error = null;
+  const isLoading = false;
+
   return (
     <SafeArea>
       <Search />
-      <AddButton navigator={navigation} />
+      {/* <AddButton navigator={navigation} /> */}
       {error && <ErrorScreen errorMessage={error} />}
       {!error && isLoading ? (
         <LoadingComponent />
@@ -32,9 +48,18 @@ export const GamesScreen = ({ route, navigation }) => {
         <GameList
           data={games}
           renderItem={({ item }) => (
-            <Spacer side="bottom" size="md">
-              <GameInfoCard game={item} />
-            </Spacer>
+            <Pressable
+              onPress={() =>
+                navigation.navigate("GameDetail", {
+                  game: item,
+                })
+              }
+              style={({ pressed }) => [{ opacity: pressed ? 0.5 : 1 }]}
+            >
+              <Spacer side="bottom" size="md">
+                {InfoCardToRender(type, item)}
+              </Spacer>
+            </Pressable>
           )}
           keyExtractor={(item) => item.name}
         />
