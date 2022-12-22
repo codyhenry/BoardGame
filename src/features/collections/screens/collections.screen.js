@@ -38,6 +38,7 @@ export const CollectionsScreen = ({ navigation }) => {
                   () =>
                     navigation.navigate("GamesHome", {
                       collection: item,
+                      name: item.name,
                     })
                   //call database if you havent entered the room before
                 }

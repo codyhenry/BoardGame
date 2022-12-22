@@ -9,16 +9,6 @@ import { GameDetailScreen } from "../../features/games/components/basic-games/ba
 //Need game screen to show all of the games in a collection
 //Need game detail screen to show info about a single game
 //title will be the name of the collection that was selected
-import { Text } from "react-native";
-
-// const GamesScreen = ({ route, navigation }) => {
-//   console.log(route.params.collection);
-//   return <Text>Games</Text>;
-// };
-// const GameDetail = ({ route, navigation }) => {
-//   console.log(route.params.game);
-//   return <Text>Game Info</Text>;
-// };
 
 const CollectionStack = createNativeStackNavigator();
 export const CollectionsNavigator = () => {
@@ -41,11 +31,16 @@ export const CollectionsNavigator = () => {
       <CollectionStack.Screen
         name="GamesHome"
         component={GamesScreen}
-        options={{ headerShown: false }}
+        options={({ route }) => ({ title: route.params.name })}
       />
       <CollectionStack.Screen
         name="GameDetail"
         component={GameDetailScreen}
+        options={{ headerShown: false, presentation: "modal" }}
+      />
+      <CollectionStack.Screen
+        name="Notes"
+        component={GamesScreen}
         options={{ headerShown: false, presentation: "modal" }}
       />
     </CollectionStack.Navigator>

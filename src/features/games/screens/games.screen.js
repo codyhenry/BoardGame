@@ -12,6 +12,7 @@ import { ErrorScreen } from "../../../components/error.component";
 // import { AddButton } from "../components/add.component";
 
 import { GamesContext } from "../../../services/games/games.context";
+import { Prompt_600SemiBold } from "@expo-google-fonts/prompt";
 
 const GameList = styled(FlatList).attrs({
   contentContainerStyle: {
