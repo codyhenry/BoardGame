@@ -14,7 +14,7 @@ export const CrowdfundGameInfoCard = ({ game = {} }) => {
     name = "Some Game",
     photo = "https://upload.wikimedia.org/wikipedia/en/a/a3/Catan-2015-boxart.jpg",
     links = ["kickstarter.com"],
-    notes = [],
+    notes = "",
     //TODO: figure out correct date format
     pledgeEnd = "4 days to go",
     estimatedDelivery = new Date().toLocaleDateString("en-GB", {
@@ -23,10 +23,8 @@ export const CrowdfundGameInfoCard = ({ game = {} }) => {
       day: "2-digit",
     }),
     funded = false,
-    pledgeLevel = "",
+    pledgeLevel = "standard",
     pledgeValue = 5,
-
-    // }),
   } = game;
   return (
     <InfoCard elevation={5}>

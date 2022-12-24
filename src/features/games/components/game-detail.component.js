@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import { BasicGameDetailScreen } from "./basic-games/basic-game-detail.screen";
 import { WishlistGameDetailScreen } from "./wishlist-games/wishlist-game-detail.screen";
 import { SellingGameDetailScreen } from "./selling-games/selling-game-detail.screen";

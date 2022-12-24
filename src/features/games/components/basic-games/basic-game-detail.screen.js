@@ -24,10 +24,8 @@ const Divider = styled.View`
   background-color: #000;
   height: 2px;
 `;
-
+//TODO: fix styling make notes its own screen
 export const BasicGameDetailScreen = ({ game }) => {
-  console.log("In detail screen basic");
-  console.log(game);
   const [isEditing, setIsEditing] = useState(false);
   const [notes, setNotes] = useState(game.notes);
   return (

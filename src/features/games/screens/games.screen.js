@@ -24,7 +24,14 @@ export const GamesScreen = ({ route, navigation }) => {
   //type is used to select appropriate Game info card component
   const { id, type } = route.params.collection;
   const games = [
-    { name: "Catan", year: 1995 },
+    {
+      name: "Catan",
+      year: 1995,
+      notes: "",
+      pledgeLevel: "standard",
+      pledgeValue: 50,
+      estimatedDelivery: new Date().toLocaleDateString("en-US"),
+    },
     {
       name: "Gloomhaven",
       year: 2016,
