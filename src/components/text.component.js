@@ -35,6 +35,10 @@ const label = (theme) => `
   font-size: ${theme.fontSizes.body};
 `;
 
+const link = (theme) => `
+  color: blue
+`;
+
 const variants = {
   body,
   label,
@@ -42,6 +46,7 @@ const variants = {
   error,
   success,
   title,
+  link,
 };
 
 export const CustomText = styled.Text`

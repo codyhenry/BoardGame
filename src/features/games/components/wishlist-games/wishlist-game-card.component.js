@@ -13,7 +13,12 @@ export const WishlistGameInfoCard = ({ game = {} }) => {
   const {
     name = "Some Game",
     photo = "https://upload.wikimedia.org/wikipedia/en/a/a3/Catan-2015-boxart.jpg",
-    links = ["amazon.com", "target.com", "miniaturemarket.com", "bgg.com"],
+    links = [
+      { site: "amazon", url: "amazon.com" },
+      { site: "target", url: "target.com" },
+      { site: "miniature market", url: "miniaturemarket.com" },
+      { site: "board game geek", url: "bgg.com" },
+    ],
     //link object for custom links to game on different websites
     year = 2015,
     oldPrice = 120.0,
@@ -21,7 +26,7 @@ export const WishlistGameInfoCard = ({ game = {} }) => {
     playTime = 30,
     minPlayers = 1,
     maxPlayers = 3,
-    notes = [],
+    notes = "",
   } = game;
   return (
     <InfoCard elevation={5}>

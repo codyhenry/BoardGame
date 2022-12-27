@@ -13,7 +13,7 @@ export const CrowdfundGameInfoCard = ({ game = {} }) => {
   const {
     name = "Some Game",
     photo = "https://upload.wikimedia.org/wikipedia/en/a/a3/Catan-2015-boxart.jpg",
-    links = ["kickstarter.com"],
+    links = [],
     notes = "",
     //TODO: figure out correct date format
     pledgeEnd = "4 days to go",

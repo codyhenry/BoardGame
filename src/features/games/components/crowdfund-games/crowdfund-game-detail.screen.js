@@ -1,6 +1,5 @@
-import { ScrollView, Pressable } from "react-native";
+import { ScrollView, Pressable, Linking } from "react-native";
 import { TextInput, List } from "react-native-paper";
-import { MaterialIcons } from "@expo/vector-icons";
 import styled from "styled-components/native";
 import { useState } from "react";
 
@@ -26,6 +25,10 @@ const Divider = styled.View`
   height: 2px;
 `;
 
+const LinksContainer = styled.View`
+  padding-left: 10px;
+`;
+
 export const CrowdfundGameDetailScreen = ({ game }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [notes, setNotes] = useState(game.notes);
@@ -39,15 +42,26 @@ export const CrowdfundGameDetailScreen = ({ game }) => {
           left={(props) => <List.Icon {...props} icon="information" />}
         >
           <List.Item title={game.pledgeLevel} description="(pledge)" />
-          <List.Item title={game.pledgeValue} />
+          <List.Item title={`$${game.pledgeValue}`} />
+          <List.Item
+            title={game.estimatedDelivery}
+            description="(estimated delivery)"
+          />
         </List.Accordion>
-        <Section>
-          <CustomText>
-            <MaterialIcons name="local-shipping" size={24} color="black" />
-            {game.estimatedDelivery}
-          </CustomText>
-        </Section>
-        <List.Item title="link" />
+        <LinksContainer>
+          <CustomText vairant="label">Go to website:</CustomText>
+          {game.links.map((link) => {
+            return (
+              <CustomText
+                variant="link"
+                onPress={() => Linking.openURL(link.url)}
+                key={link.url}
+              >
+                {link.site}
+              </CustomText>
+            );
+          })}
+        </LinksContainer>
         <Section>
           <Divider />
           <CustomText variant="title">Notes</CustomText>

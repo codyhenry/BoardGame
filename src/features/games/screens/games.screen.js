@@ -25,20 +25,71 @@ export const GamesScreen = ({ route, navigation }) => {
   const { id, type } = route.params.collection;
   const games = [
     {
+      //crowdfund example
       name: "Catan",
       year: 1995,
       notes: "",
       pledgeLevel: "standard",
       pledgeValue: 50,
       estimatedDelivery: new Date().toLocaleDateString("en-US"),
+      links: [
+        {
+          site: "kickstarter",
+          url: "https://www.kickstarter.com/games?ref=discovery_overlay",
+        },
+      ],
     },
     {
+      //basic example
       name: "Gloomhaven",
       year: 2016,
       playTime: 30,
       minPlayers: 1,
       maxPlayers: 3,
       notes: "Notes test",
+    },
+    //selling example (sold)
+    {
+      name: "Summoner Wars",
+      photo:
+        "https://upload.wikimedia.org/wikipedia/en/a/a3/Catan-2015-boxart.jpg",
+      links: [{ site: "amazon", url: "amazon.com" }],
+      year: 2015,
+      bestPrice: 100.0,
+      notes: "",
+      condition: "new in shrink",
+      sold: true,
+      soldDate: new Date().toLocaleDateString("en-US"),
+    },
+    //selling example (not sold)
+    {
+      name: "Here to Slay",
+      photo:
+        "https://upload.wikimedia.org/wikipedia/en/a/a3/Catan-2015-boxart.jpg",
+      links: [{ site: "amazon", url: "amazon.com" }],
+      year: 2016,
+      bestPrice: 100.0,
+      notes: "",
+      condition: "like new",
+      sold: false,
+      soldDate: "",
+    },
+    //wishlist example
+    {
+      name: "Dice Throne Season 2",
+      year: 2018,
+      links: [
+        { site: "amazon", url: "amazon.com" },
+        { site: "target", url: "target.com" },
+        { site: "miniature market", url: "miniaturemarket.com" },
+        { site: "board game geek", url: "bgg.com" },
+      ],
+      oldPrice: 120.0,
+      bestPrice: 100.0,
+      playTime: 30,
+      minPlayers: 1,
+      maxPlayers: 3,
+      notes: "",
     },
   ];
   const error = null;

@@ -4,6 +4,7 @@ import { SellingGameDetailScreen } from "./selling-games/selling-game-detail.scr
 import { CrowdfundGameDetailScreen } from "./crowdfund-games/crowdfund-game-detail.screen";
 
 export const DetailCardToRender = (type, item) => {
+  console.log(type);
   switch (type) {
     case "basic":
       return <BasicGameDetailScreen game={item} />;
