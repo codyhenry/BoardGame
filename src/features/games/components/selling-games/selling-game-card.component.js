@@ -1,5 +1,4 @@
 import { ImageBackground } from "react-native";
-import styled from "styled-components/native";
 import {
   InfoCard,
   InfoCardCover,
@@ -22,9 +21,7 @@ export const SellingGameInfoCard = ({ game = {} }) => {
     condition = "used",
     sold = true,
     soldDate = new Date().toLocaleDateString("en-US"),
-    //SELLING: Condition (chips: red=damaged, orange=worn, yellow=like new, green=new in shrink), number of duplicate games to sell
   } = game;
-  //TODO: If sold, make image gray
   return (
     <InfoCard elevation={5}>
       <ImageBackground
