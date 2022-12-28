@@ -9,7 +9,6 @@ const ErrorView = styled.View`
 `;
 
 export const ErrorScreen = ({ errorMessage }) => {
-  console.log(errorMessage);
   return (
     <ErrorView>
       <CustomText variant="error">{errorMessage}</CustomText>

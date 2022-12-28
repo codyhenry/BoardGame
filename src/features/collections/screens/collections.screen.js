@@ -9,6 +9,7 @@ import { Spacer } from "../../../components/spacer.component";
 import { LoadingComponent } from "../../../components/activity-indicator.component";
 import { CollectionInfoCard } from "../components/collection-info-card.component";
 import { ErrorScreen } from "../../../components/error.component";
+import { AddButton } from "../components/add.component";
 
 import { CollectionsContext } from "../../../services/collections/collections.context";
 
@@ -19,12 +20,10 @@ const CollectionList = styled(FlatList).attrs({
 })``;
 
 export const CollectionsScreen = ({ navigation }) => {
-  //TODO: add a button to create new collection
   const { collections, isLoading, error } = useContext(CollectionsContext);
-
   return (
     <SafeArea>
-      <Search />
+      <AddButton navigator={navigation} />
       {error && <ErrorScreen errorMessage={error} />}
       {!error && isLoading ? (
         <LoadingComponent />
@@ -36,8 +35,9 @@ export const CollectionsScreen = ({ navigation }) => {
               <Pressable
                 onPress={
                   () =>
-                    navigation.navigate("CollectionDetail", {
+                    navigation.navigate("GamesHome", {
                       collection: item,
+                      name: item.name,
                     })
                   //call database if you havent entered the room before
                 }
@@ -47,7 +47,7 @@ export const CollectionsScreen = ({ navigation }) => {
               </Pressable>
             </Spacer>
           )}
-          keyExtractor={(item) => item.name}
+          keyExtractor={(item) => item.id}
         />
       )}
     </SafeArea>

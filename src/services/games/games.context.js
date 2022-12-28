@@ -1,13 +1,13 @@
-import { useState, useReducer, createContext, useContext } from "react";
+import { useState, createContext, useContext } from "react";
 
 import {
   gamesRequest,
   gamesTransform,
   gameAdd,
   gameRemove,
+  gameUpdate,
 } from "./games.service";
 import { AuthenticationContext } from "../authentication/authentication.context";
-import { CollectionsContext } from "../collections/collections.context";
 
 export const GamesContext = createContext();
 
@@ -17,7 +17,7 @@ export const GamesContextProvider = ({ children }) => {
   const [isActionLoading, setIsActionLoading] = useState(false);
   const [error, setError] = useState(null);
   const { user } = useContext(AuthenticationContext);
-  const { currentCollectionId } = useContext(CollectionsContext);
+  const userRef = `Users/${user.uid}`;
 
   // const retrieveGames = () => {
   //   setIsLoading(true);
@@ -39,10 +39,15 @@ export const GamesContextProvider = ({ children }) => {
   //   retrieveGames();
   // }, []);
 
+  // const checkGames = () => {
+
+  // }
+
   //TODO check before database call that this information doesnt already exist
-  const getGamesforCollection = () => {
+  const getGamesforCollection = (currentCollectionId) => {
     setIsLoading(true);
-    gamesRequest(user.uid, currentCollectionId)
+    //TODO check if collection's games are already available
+    gamesRequest(userRef, currentCollectionId)
       .then(gamesTransform)
       .then((results) => {
         setIsLoading(false);
@@ -116,7 +121,6 @@ export const GamesContextProvider = ({ children }) => {
       )
       .then(() => {
         setIsActionLoading(false);
-        //update the games list
       })
       .catch((err) => {
         setIsActionLoading(false);
@@ -125,13 +129,14 @@ export const GamesContextProvider = ({ children }) => {
   };
 
   return (
-    <GamesContext.Provider value={{ games, isLoading, error }}>
+    <GamesContext.Provider value={{ games, isLoading, isActionLoading, error }}>
       {children}
     </GamesContext.Provider>
   );
 };
 
 //TODO: The context here will have an object with nested objects inside. Each nested object is one collection of games
+//TODO: function to save the games list to db on ANY change to the game list. Each request does not need its own save function
 
 /*
 var games = {};

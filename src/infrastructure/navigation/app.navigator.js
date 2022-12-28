@@ -1,7 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Text } from "react-native";
-
 import { Ionicons } from "@expo/vector-icons";
 
 import { CollectionsNavigator } from "./collections.navigator";
@@ -14,7 +13,7 @@ const Tab = createBottomTabNavigator();
 
 const TAB_ICON = {
   Collections: { true: "md-albums", false: "md-albums-outline" },
-  Market: { true: "md-pricetags", false: "md-pricetags-outline" },
+  Market: { true: "md-cart", false: "md-cart-outline" },
   Search: { true: "md-search", false: "md-search-outline" },
 };
 

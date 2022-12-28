@@ -1,4 +1,5 @@
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
+import { Provider as PaperProvider } from "react-native-paper";
 import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/infrastructure/theme";
 import { useFonts } from "expo-font";
@@ -29,18 +30,18 @@ export default function App() {
     Prompt_700Bold,
   });
 
-  return (
-    <>
-      {!loadedFonts ? (
-        <Text>Replace this with splash screen</Text>
-      ) : (
+  {
+    if (loadedFonts) {
+      return (
         <ThemeProvider theme={theme}>
           <ExpoStatusBar style="auto" />
-          <AuthenticationContextProvider>
-            <Navigation />
-          </AuthenticationContextProvider>
+          <PaperProvider>
+            <AuthenticationContextProvider>
+              <Navigation />
+            </AuthenticationContextProvider>
+          </PaperProvider>
         </ThemeProvider>
-      )}
-    </>
-  );
+      );
+    }
+  }
 }

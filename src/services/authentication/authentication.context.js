@@ -3,6 +3,7 @@ import { useState, createContext, useEffect } from "react";
 import {
   loginRequest,
   registerRequest,
+  createUserAccount,
   checkUserAuth,
   logoutRequest,
 } from "./authentication.service";
@@ -45,6 +46,7 @@ export const AuthenticationContextProvider = ({ children }) => {
       });
   };
 
+  //create a new user for collections document also
   const onRegister = (email, password, repeatedPassword) => {
     if (password !== repeatedPassword) {
       setError("Passwords do not match");
@@ -55,8 +57,11 @@ export const AuthenticationContextProvider = ({ children }) => {
       .then((verifiedUser) => {
         setUser(verifiedUser);
         setIsLoading(false);
+        return verifiedUser;
       })
+      .then((verifiedUser) => createUserAccount(verifiedUser.uid))
       .catch((error) => {
+        console.log("error" + error);
         var err = error.code;
         if (err.includes("weak-password")) {
           err = "Passwords must be at least 6 characters";

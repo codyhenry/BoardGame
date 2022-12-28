@@ -19,7 +19,7 @@ export const Search = () => {
   return (
     <SearchContainer>
       <Searchbar
-        placeholder="Search for a collection"
+        placeholder="Search this collection"
         value={searchUser}
         onSubmitEditing={() => search(searchUser)}
         onChangeText={(text) => {

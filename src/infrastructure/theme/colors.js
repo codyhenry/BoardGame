@@ -25,6 +25,7 @@ export const colors = {
     inverse: "#FFFFFF",
     error: "#FB3640",
     success: "#138000",
+    link: "#004FFF",
   },
   //dark: #2A2B2A
   //light: F7F7F7
