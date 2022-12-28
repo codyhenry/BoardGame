@@ -7,6 +7,7 @@ import {
   SectionEnd,
 } from "../../../../components/info-card.styles";
 import { CustomText } from "../../../../components/text.component";
+import { ConditionChip } from "../../../../components/chip.component";
 
 export const SellingGameInfoCard = ({ game = {} }) => {
   const {
@@ -15,16 +16,14 @@ export const SellingGameInfoCard = ({ game = {} }) => {
     links = ["amazon.com"],
     year = 2015,
     bestPrice = 100.0,
+    salePrice = 125.0,
     notes = [],
-    condition = "",
+    condition = "used",
     sold = true,
-    soldDate = new Date().toLocaleDateString("en-GB", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    }),
+    soldDate = new Date().toLocaleDateString("en-US"),
     //SELLING: Condition (chips: red=damaged, orange=worn, yellow=like new, green=new in shrink), number of duplicate games to sell
   } = game;
+  //TODO: If sold, make image gray
   return (
     <InfoCard elevation={5}>
       <ImageBackground
@@ -37,11 +36,14 @@ export const SellingGameInfoCard = ({ game = {} }) => {
       <Info>
         <Section>
           <CustomText variant="label">{name} </CustomText>
+          <SectionEnd>
+            <ConditionChip category={condition} />
+          </SectionEnd>
         </Section>
         <Section>
           <CustomText variant="caption">published: {year}</CustomText>
           <SectionEnd>
-            <CustomText variant="label">${bestPrice}</CustomText>
+            <CustomText variant="label">listed: ${salePrice}</CustomText>
           </SectionEnd>
         </Section>
       </Info>
