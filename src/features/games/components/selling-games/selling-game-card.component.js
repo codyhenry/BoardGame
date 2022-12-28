@@ -1,4 +1,5 @@
 import { ImageBackground } from "react-native";
+import styled from "styled-components/native";
 import {
   InfoCard,
   InfoCardCover,
@@ -43,7 +44,11 @@ export const SellingGameInfoCard = ({ game = {} }) => {
         <Section>
           <CustomText variant="caption">published: {year}</CustomText>
           <SectionEnd>
-            <CustomText variant="label">listed: ${salePrice}</CustomText>
+            {sold ? (
+              <CustomText variant="label">listed: ${salePrice}</CustomText>
+            ) : (
+              <CustomText variant="success">Sold</CustomText>
+            )}
           </SectionEnd>
         </Section>
       </Info>

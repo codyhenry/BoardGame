@@ -30,11 +30,9 @@ export default function App() {
     Prompt_700Bold,
   });
 
-  return (
-    <>
-      {!loadedFonts ? (
-        <Text>Replace this with splash screen</Text>
-      ) : (
+  {
+    if (loadedFonts) {
+      return (
         <ThemeProvider theme={theme}>
           <ExpoStatusBar style="auto" />
           <PaperProvider>
@@ -43,7 +41,7 @@ export default function App() {
             </AuthenticationContextProvider>
           </PaperProvider>
         </ThemeProvider>
-      )}
-    </>
-  );
+      );
+    }
+  }
 }

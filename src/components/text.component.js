@@ -3,13 +3,14 @@ import styled from "styled-components/native";
 const defaultTextStyles = (theme) => `
   font-family: ${theme.fonts.body};
   color: ${theme.colors.text.primary};
+  font-size: ${theme.fontSizes.body};
   flex-wrap: wrap;
   margin-top: 0px;
   margin-bottom: 0px;
 `;
 
 const body = (theme) => `
-  font-size: ${theme.fontSizes.body};
+font-family: ${theme.fonts.body};
 `;
 
 const title = (theme) => `
@@ -32,11 +33,10 @@ font-family: ${theme.fonts.bodyBold};
 
 const label = (theme) => `
   font-family: ${theme.fonts.headingMedium};
-  font-size: ${theme.fontSizes.body};
 `;
 
 const link = (theme) => `
-  color: blue
+color: ${theme.colors.text.link}; 
 `;
 
 const variants = {

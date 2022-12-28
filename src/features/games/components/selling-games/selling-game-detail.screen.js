@@ -1,5 +1,6 @@
 import { ScrollView, Pressable, Linking } from "react-native";
-import { TextInput, List, Checkbox } from "react-native-paper";
+import Checkbox from "expo-checkbox";
+import { TextInput, List } from "react-native-paper";
 import styled from "styled-components/native";
 import { useState } from "react";
 
@@ -10,9 +11,9 @@ import { Spacer } from "../../../../components/spacer.component";
 const Section = styled.View`
   flex-direction: row;
   flex-wrap: wrap
-  justify-content: space-evenly;
-  padding-top: 5px;
+  justify-content: start;
   align-items: center;
+  padding: 10px;
 `;
 
 const NotesSection = styled.View`
@@ -29,7 +30,7 @@ const LinksContainer = styled.View`
   padding-left: 10px;
 `;
 
-//TODO: sold status checkbox. Disable after click
+//TODO: sold status checkbox. Disable after click create date on sell click
 export const SellingGameDetailScreen = ({ game }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [notes, setNotes] = useState(game.notes);
@@ -47,16 +48,21 @@ export const SellingGameDetailScreen = ({ game }) => {
             title={`Best Price: $${game.bestPrice}`}
             description={`(found at: ${game.links[0].site})`}
           />
-          <Checkbox.Item
-            label="Sold"
-            status={isSold ? "checked" : "unchecked"}
-            onPress={() => setIsSold(!isSold)}
-            color="black"
-          />
           {isSold && (
             <List.Item title={game.soldDate} description="(sell date)" />
           )}
         </List.Accordion>
+        <Section>
+          <CustomText>Game Sold:</CustomText>
+          <Spacer side="left" size="sm" />
+          <Checkbox
+            disabled={false}
+            value={isSold}
+            onValueChange={(newValue) => setIsSold(newValue)}
+            color={isSold ? "#4630EB" : undefined}
+            style={{ paddingLeft: 0, width: 20 }}
+          />
+        </Section>
         <LinksContainer>
           <CustomText vairant="label">Go to website:</CustomText>
           {game.links.map((link) => {
