@@ -1,5 +1,5 @@
 import { ScrollView, Pressable, Linking } from "react-native";
-import { TextInput, List } from "react-native-paper";
+import { TextInput, List, Checkbox } from "react-native-paper";
 import styled from "styled-components/native";
 import { useState } from "react";
 
@@ -47,10 +47,15 @@ export const SellingGameDetailScreen = ({ game }) => {
             title={`Best Price: $${game.bestPrice}`}
             description={`(found at: ${game.links[0].site})`}
           />
+          <Checkbox.Item
+            label="Sold"
+            status={isSold ? "checked" : "unchecked"}
+            onPress={() => setIsSold(!isSold)}
+            color="black"
+          />
           {isSold && (
             <List.Item title={game.soldDate} description="(sell date)" />
           )}
-          <List.Item title="Sold Checkbox" />
         </List.Accordion>
         <LinksContainer>
           <CustomText vairant="label">Go to website:</CustomText>
