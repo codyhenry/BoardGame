@@ -1,9 +1,5 @@
-import {
-  InfoCard,
-  Info,
-  Section,
-  SectionEnd,
-} from "../../../components/info-card.styles";
+import { InfoCard, Info } from "../../../components/info-card.styles";
+import { Section } from "../../../components/section.component";
 import { CustomText } from "../../../components/text.component";
 import { CollectionChip } from "../../../components/chip.component";
 
@@ -23,9 +19,9 @@ export const CollectionInfoCard = ({ collection = {} }) => {
         </Section>
         <Section>
           <CustomText variant="caption">{numGames} Items</CustomText>
-          <SectionEnd>
+          <Section variant="end">
             <CollectionChip category={type} />
-          </SectionEnd>
+          </Section>
         </Section>
       </Info>
     </InfoCard>

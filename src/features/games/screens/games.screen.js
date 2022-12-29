@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import { FlatList, Pressable } from "react-native";
 import styled from "styled-components/native";
 
@@ -7,8 +6,9 @@ import { Search } from "../components/search.component";
 import { SafeArea } from "../../../components/safe-area.component";
 import { Spacer } from "../../../components/spacer.component";
 import { LoadingComponent } from "../../../components/activity-indicator.component";
-import { InfoCardToRender } from "../components/game-info.component";
 import { ErrorScreen } from "../../../components/error.component";
+
+import { GameCard } from "../../../components/game-card.component";
 // import { AddButton } from "../components/add.component";
 
 // import { GamesContext } from "../../../services/games/games.context";
@@ -43,21 +43,26 @@ export const GamesScreen = ({ route, navigation }) => {
       //basic example
       name: "Gloomhaven",
       year: 2016,
+      notes: "Notes test",
+      photo:
+        "https://upload.wikimedia.org/wikipedia/en/e/ee/Gloomhaven_Cover_Art.jpg",
       playTime: 30,
       minPlayers: 1,
       maxPlayers: 3,
-      notes: "Notes test",
     },
     //selling example (sold)
     {
       name: "Summoner Wars",
+      year: 2015,
+      notes: "",
       photo:
         "https://upload.wikimedia.org/wikipedia/en/a/a3/Catan-2015-boxart.jpg",
+      playTime: 30,
+      minPlayers: 1,
+      maxPlayers: 3,
       links: [{ site: "amazon", url: "amazon.com" }],
-      year: 2015,
       bestPrice: 100.0,
       salePrice: 90.0,
-      notes: "",
       condition: "worn",
       sold: true,
       soldDate: new Date().toLocaleDateString("en-US"),
@@ -67,6 +72,9 @@ export const GamesScreen = ({ route, navigation }) => {
       name: "Here to Slay",
       photo:
         "https://upload.wikimedia.org/wikipedia/en/a/a3/Catan-2015-boxart.jpg",
+      playTime: 30,
+      minPlayers: 1,
+      maxPlayers: 3,
       links: [{ site: "amazon", url: "amazon.com" }],
       year: 2016,
       bestPrice: 100.0,
@@ -76,7 +84,7 @@ export const GamesScreen = ({ route, navigation }) => {
       sold: false,
       soldDate: "",
     },
-    //wishlist example
+    // wishlist example
     {
       name: "Dice Throne Season 2",
       year: 2018,
@@ -86,6 +94,9 @@ export const GamesScreen = ({ route, navigation }) => {
         { site: "miniature market", url: "miniaturemarket.com" },
         { site: "board game geek", url: "bgg.com" },
       ],
+      playTime: 30,
+      minPlayers: 1,
+      maxPlayers: 3,
       oldPrice: 120.0,
       bestPrice: 100.0,
       playTime: 30,
@@ -118,7 +129,7 @@ export const GamesScreen = ({ route, navigation }) => {
               style={({ pressed }) => [{ opacity: pressed ? 0.5 : 1 }]}
             >
               <Spacer side="bottom" size="md">
-                {InfoCardToRender(type, item)}
+                {GameCard(type, item)}
               </Spacer>
             </Pressable>
           )}

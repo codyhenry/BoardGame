@@ -3,12 +3,9 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { CollectionsScreen } from "../../features/collections/screens/collections.screen";
 import { Popup } from "../../features/collections/components/popup.component";
-//game screen
+
 import { GamesScreen } from "../../features/games/screens/games.screen";
-import { GameDetail } from "../../features/games/components/game-detail-card.component";
-//Need game screen to show all of the games in a collection
-//Need game detail screen to show info about a single game
-//title will be the name of the collection that was selected
+import { GameDetail } from "../../components/game-detail.screen";
 
 const CollectionStack = createNativeStackNavigator();
 export const CollectionsNavigator = () => {
