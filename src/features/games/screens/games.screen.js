@@ -29,6 +29,8 @@ export const GamesScreen = ({ route, navigation }) => {
       name: "Catan",
       year: 1995,
       notes: "",
+      photo:
+        "https://upload.wikimedia.org/wikipedia/en/a/a3/Catan-2015-boxart.jpg",
       pledgeLevel: "standard",
       pledgeValue: 50,
       estimatedDelivery: new Date().toLocaleDateString("en-US"),

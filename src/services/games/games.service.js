@@ -16,7 +16,6 @@ export const gamesRequest = (userRef, collectionId) => {
 //based on the collection. Add the prices that were scrapped recently
 //oldPrice = currentPrice; currentPrice = newPrice
 export const gamesTransform = ({ results = [] }) => {
-  const newResult = camelize(results);
   const mappedResults = newResult.map((game) => {
     //TODO: Photo should come from database
     return {

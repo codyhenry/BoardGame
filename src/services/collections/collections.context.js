@@ -71,12 +71,6 @@ export const CollectionsContextProvider = ({ children }) => {
 
   //every time a collection is selected, change the current id
 
-  //do not need to search for anything here because all collections are recieved on mount
-  const onSearch = (searchKeyword) => {
-    setIsLoading(true);
-    //setUser(searchKeyword);
-  };
-
   return (
     <CollectionsContext.Provider
       value={{
@@ -84,7 +78,6 @@ export const CollectionsContextProvider = ({ children }) => {
         isActionLoading,
         error,
         collections,
-        search: onSearch,
         user,
         addNew: addCollection,
       }}

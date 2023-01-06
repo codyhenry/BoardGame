@@ -1,4 +1,4 @@
-import { useState, createContext, useContext } from "react";
+import { useState, createContext, useContext, useEffect } from "react";
 
 import {
   gamesRequest,
@@ -12,48 +12,45 @@ import { AuthenticationContext } from "../authentication/authentication.context"
 export const GamesContext = createContext();
 
 export const GamesContextProvider = ({ children }) => {
-  const [games, setGames] = useState({});
+  //games will be 15 games from db, updated everytime collection is entered
+  const [games, setGames] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isActionLoading, setIsActionLoading] = useState(false);
+  const [keyword, setKeyword] = useState("");
   const [error, setError] = useState(null);
   const { user } = useContext(AuthenticationContext);
   const userRef = `Users/${user.uid}`;
 
-  // const retrieveGames = () => {
-  //   setIsLoading(true);
-  //   setTimeout(() => {
-  //     gamesRequest()
-  //       .then(gamesTransform)
-  //       .then((result) => {
-  //         setIsLoading(false);
-  //         setGames(result);
-  //       })
-  //       .catch((err) => {
-  //         setIsLoading(false);
-  //         setError(err);
-  //       });
-  //   }, 2000);
-  // };
-
+  //GET single game from search
   // useEffect(() => {
-  //   retrieveGames();
-  // }, []);
+  //   if (!keyword || keyword.trim().length === 0) {
+  //     return;
+  //   }
+  //   gameRequest(keyword.toLowerCase())
+  //     .then((result) => {
+  //       setLocation(result);
+  //     })
+  //     .catch((error) => {
+  //       setError(error);
+  //     });
+  // }, [keyword]);
 
-  // const checkGames = () => {
+  //TODO: Need debounce
+  const onSearch = (searchKeyword) => {
+    setKeyword(searchKeyword);
+  };
 
-  // }
-
-  //TODO check before database call that this information doesnt already exist
+  //GET all games
   const getGamesforCollection = (currentCollectionId) => {
     setIsLoading(true);
-    //TODO check if collection's games are already available
+    setGames([]);
     gamesRequest(userRef, currentCollectionId)
       .then(gamesTransform)
       .then((results) => {
         setIsLoading(false);
         //TODO: check result first may need result.data or something
         //TODO:may need to transform results into a usable array
-        setGames((games) => ({ ...games, results }));
+        setGames(results);
       })
       .catch((err) => {
         setIsLoading(false);
@@ -61,16 +58,17 @@ export const GamesContextProvider = ({ children }) => {
       });
   };
 
-  const addToList = (game, collectionId) => {
-    var temp = games;
-    temp[collectionId].push({ game });
+  const addToList = (game) => {
+    const temp = [];
+    temp.push(game, ...games);
     setGames(temp);
   };
 
-  const addGameToCollection = (GametoAdd) => {
+  //POST game
+  const addGameToCollection = (gametoAdd) => {
     setIsActionLoading(true);
-    gameAdd(user.uid, currentCollectionId, GametoAdd)
-      .then(addToList(GametoAdd, currentCollectionId))
+    gameAdd(user.uid, currentCollectionId, gametoAdd)
+      .then((gameId) => addToList(gameId, gametoAdd))
       .then(() => {
         setIsActionLoading(false);
       })
@@ -81,14 +79,14 @@ export const GamesContextProvider = ({ children }) => {
   };
 
   const removeFromList = (gameId, collectionId) => {
-    var temp = games;
+    const temp = games;
     temp[collectionId] = temp[collectionId].filter((game) => {
       return game.id != gameId;
     });
     setGames(temp);
   };
 
-  //set games by removing old collection and adding new collection
+  //DELETE game
   const removeGameFromCollection = (gameToDelete) => {
     setIsActionLoading(true);
     gameRemove(user.uid, currentCollectionId, gameToDelete)
@@ -109,6 +107,7 @@ export const GamesContextProvider = ({ children }) => {
     setGames(temp);
   };
 
+  //UPDATE game
   const updateSoldGame = (gameToUpdate) => {
     setIsActionLoading(true);
     gameUpdate(user.uid, currentCollectionId, gameToUpdate)
@@ -129,14 +128,16 @@ export const GamesContextProvider = ({ children }) => {
   };
 
   return (
-    <GamesContext.Provider value={{ games, isLoading, isActionLoading, error }}>
+    <GamesContext.Provider
+      value={{ games, isLoading, isActionLoading, error, search: onSearch }}
+    >
       {children}
     </GamesContext.Provider>
   );
 };
 
-//TODO: The context here will have an object with nested objects inside. Each nested object is one collection of games
 //TODO: function to save the games list to db on ANY change to the game list. Each request does not need its own save function
+//TODO: To reduce database calls, each
 
 /*
 var games = {};
